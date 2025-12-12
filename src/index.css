@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: light --default;
+}
+;
+body {
+  background-color: #95732e; /* your warm sand color */
+}
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #03373D;
+  --color-secondary: teal;
+}
