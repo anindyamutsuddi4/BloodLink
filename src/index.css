@@ -5,12 +5,12 @@
 }
 ;
 body {
-  background-color: #95732e; /* your warm sand color */
+  background-color: #d1c09d; /* your warm sand color */
 }
 
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #03373D;
+  --color-primary: #521D20;
   --color-secondary: teal;
 }

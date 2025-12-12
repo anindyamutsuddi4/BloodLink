@@ -31,15 +31,14 @@ const Navbar = () => {
                 ? <li><button onClick={handlelogout}>Logout</button></li>
                 : <li><NavLink to="/login">Login</NavLink></li>
         }
-        <li>|</li>
-        <li><NavLink to="/allchallenges">Challenges</NavLink></li>
-
 
         {user && <li>|</li>}
-
         {
-            user && <li><NavLink to={`/myactivities/${user.email}`}>My activities</NavLink></li>
+            user && <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
         }
+        {/* {
+            user && <li><NavLink to={`/myactivities/${user.email}`}>My activities</NavLink></li>
+        } */}
     </>
     return (
         <div>
