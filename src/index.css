@@ -3,14 +3,20 @@
 @plugin "daisyui" {
   themes: light --default;
 }
+
 ;
+
 body {
-  background-color: #d1c09d; /* your warm sand color */
+  background-color: #f0e2e2;
+  /* your warm sand color */
 }
 
+/* #5a2828 */
+/* 250101 */
+/* 74060F */
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #521D20;
+  --color-primary: #5a2828;
   --color-secondary: teal;
 }

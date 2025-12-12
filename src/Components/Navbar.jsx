@@ -42,7 +42,7 @@ const Navbar = () => {
     </>
     return (
         <div>
-            <div className="navbar py-[10px] text-white fixed z-50  bg-[#521D20] px-6 backdrop-blur-xl">
+            <div className="navbar py-[10px] text-white fixed z-50  bg-[#c9a3a8] px-6 backdrop-blur-xl">
                 <div className="navbar-start ">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -56,13 +56,13 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
-                    <div>   <a className="md:text-2xl text-xl lg:text-[20px] p-2 px-4 bg-[#847668] rounded-4xl font-bold text-[#27293D]">BloodLink</a>
+                    <div>   <a className="md:text-2xl text-xl lg:text-[20px] p-2 px-4 bg-amber-400 rounded-4xl font-bold text-[#521D20]">BloodLink</a>
                         {/* <div className=' text-[11px] md:text-sm pl-3 font-sans font-[400px]'>Join,Act & Grow <span className='font-bold text-[#17483d]'>Green</span> Together</div> */}
                     </div>
 
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-4 items-center bg-[#847668] rounded-4xl text-[#27293D] font-semibold text-md">
+                    <ul className="menu menu-horizontal px-4 items-center bg-primary rounded-4xl text-gray-200 font-semibold text-md">
 
                         {
                             list

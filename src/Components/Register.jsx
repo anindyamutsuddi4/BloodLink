@@ -2,6 +2,8 @@ import React, { use, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from './AuthContext';
 import useAxiosSecure from '../useAxiosSecure';
+import { reload } from 'firebase/auth';
+import { auth } from '../firebase.init';
 const Register = () => {
     const [alldivisions, setalldivisions] = useState([])
     const [alldistricts, setalldistricts] = useState([])
@@ -13,7 +15,7 @@ const Register = () => {
         watch,
         formState: { isSubmitting },
     } = useForm()
-    const { user, loading, signupuser } = use(AuthContext)
+    const { user, loading, signupuser, updateuser } = use(AuthContext)
     useEffect(() => {
         fetch('/Divisions.json').then(res => res.json())
             .then(res => {
@@ -35,7 +37,7 @@ const Register = () => {
     const districts = name => {
         //     console.log(id)
         const da = alldivisions.find(x => x.name == name)
-         if (!da) return []; 
+        if (!da) return [];
         const data = alldistricts.filter(x => x.division_id == da.id)
         const data2 = data.map(x => x.name)
         // console.log(data2)
@@ -65,6 +67,12 @@ const Register = () => {
                     divisions: data.divisions,
                     district: data.district,
                 }
+                updateuser({
+                    ...(data.name && { displayName: data.name }),
+                    ...(data.avatar && { photoURL: data.avatar })
+                })
+                reload(auth.currentUser)
+                console.log(auth.currentUser.displayName, auth.currentUser.photoURL);
                 axiosSecure.post('/users', userinfo)
                     .then(res => {
                         if (res.data.insertedId) {
@@ -73,6 +81,19 @@ const Register = () => {
                     })
             })
             .catch(error => console.log(error))
+        // updateuser({
+        //     ...(data.name && { displayName: data.name }),
+        //     ...(data.avatar && { photoURL: data.avatar })
+        // })
+        //     .then(async () => {
+        //         console.log("User data updated to Firebase");
+        //         // reload the user to get updated displayName and photoURL
+        //         await reload(auth.currentUser);
+        //         console.log(auth.currentUser.displayName, auth.currentUser.photoURL);
+        //     })
+        //     .catch((error) => {
+        //         console.error(error);
+        //     });
         // axiosSecure.post('/users', data)
         //     .then(res => console.log(res.data))
 

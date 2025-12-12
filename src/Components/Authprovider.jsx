@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, reload, signInWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 import { AuthContext } from './AuthContext';
 import { auth } from '../firebase.init';
 const Authprovider = ({ children }) => {
@@ -15,10 +15,14 @@ const Authprovider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password)
             .finally(() => setloading(false))
     }
-    const updateuser = (object) => {
+    const updateuser = async (object) => {
         setloading(true);
-        return updateProfile(auth.currentUser, object)
-            .finally(() => setloading(false))
+        try {
+            await updateProfile(auth.currentUser, object);
+            await reload(auth.currentUser);
+            setuser({ ...auth.currentUser });
+        }
+        finally { () => setloading(false) }
     }
     // const resetpass = (email) => {
     //     return sendPasswordResetEmail(auth, email)
