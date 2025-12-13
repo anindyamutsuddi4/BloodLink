@@ -54,10 +54,7 @@ const DonationRequest = () => {
                 </div>
             </div>
 
-
-            {response.totalCount > 0 ? (
-                <div>
-                    <div className="ml-4 sm:ml-10 md:ml-20 lg:ml-40">
+  <div className="ml-4 sm:ml-10 md:ml-20 lg:ml-40">
                         <div className="dropdown rounded-2xl dropdown-bottom dropdown-end">
                             <label
                                 tabIndex={0}
@@ -70,7 +67,7 @@ const DonationRequest = () => {
                                 tabIndex={0}
                                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-32 sm:w-36"
                             >
-                                {["all", "pending", "inprogress", "done", "canceled"].map((status) => (
+                                {["all", "pending", "inprogress", "done", "cancelled"].map((status) => (
                                     <li key={status}>
                                         <button
                                             onClick={() => {
@@ -86,6 +83,9 @@ const DonationRequest = () => {
                             </ul>
                         </div>
                     </div>
+            {response.totalCount > 0 ? (
+                <div>
+                  
                     <div className="pt-4 px-2 sm:px-4 md:px-10 lg:px-15 overflow-x-auto">
                         <div className="overflow-x-auto border rounded-xl border-amber-400">
                             <table className="table w-full bg-[#edf4e5] text-sm sm:text-base">

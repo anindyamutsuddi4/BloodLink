@@ -13,9 +13,9 @@ const DashboardLayout = () => {
     //eta kintu object
     return (
         <div className='pt-17'>
-            <div className="drawer lg:drawer-open">
+            <div className="drawer  lg:drawer-open">
                 <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content">
+                <div className="drawer-content ">
                     {/* Navbar */}
                     <nav className="navbar w-full bg-primary text-white ">
                         <label htmlFor="my-drawer-4" aria-label="open sidebar" className="btn btn-square btn-ghost">
