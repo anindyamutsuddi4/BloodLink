@@ -8,6 +8,7 @@ import MyProfile from "./Components/MyProfile";
 import DonationRequest from "./Components/DonationRequest";
 import DashboardHome from "./Components/DashboardHome";
 import Requestforblood from "./Components/Requestforblood";
+import RequestDetails from "./Components/RequestDetails";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -22,19 +23,23 @@ export const router = createBrowserRouter([
             path: "/dashboard",
             element: <Privateroute><DashboardLayout></DashboardLayout></Privateroute>,
             children: [{
-                 index: true,
-                element: <Privateroute><DashboardHome></DashboardHome></Privateroute> 
+                index: true,
+                element: <Privateroute><DashboardHome></DashboardHome></Privateroute>
             },
-                {
+            {
                 path: '/dashboard/profile',
                 element: <Privateroute><MyProfile></MyProfile></Privateroute>
             }, {
                 path: "/dashboard/my-donation-requests",
                 element: <Privateroute><DonationRequest></DonationRequest></Privateroute>
-            },{
-                path:"/dashboard/create-donation-request",
-                element:<Privateroute><Requestforblood></Requestforblood></Privateroute>
-            }]
+            }, {
+                path: "/dashboard/create-donation-request",
+                element: <Privateroute><Requestforblood></Requestforblood></Privateroute>
+            }, {
+                path: "/dashboard/request-details/:id",
+                element: <Privateroute><RequestDetails></RequestDetails></Privateroute>
+            }
+            ]
         }]
     },
 ]);

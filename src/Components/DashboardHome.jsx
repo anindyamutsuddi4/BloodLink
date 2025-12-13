@@ -2,10 +2,12 @@ import React, { use } from 'react';
 import { AuthContext } from './AuthContext';
 import useAxiosSecure from '../useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { NavLink, useNavigate } from 'react-router';
 
 const DashboardHome = () => {
     const { user } = use(AuthContext)
     const axiosSecure = useAxiosSecure()
+    const navigate = useNavigate()
     // const [filter, setFilter] = useState('all');
     // const [totalpage, settotalpage] = useState(0)
     //  const [currentpage, setcurrentpage] = useState(0)
@@ -83,12 +85,13 @@ const DashboardHome = () => {
                                     <td>{new Date(x.createdAt).toLocaleString('en-GB')}</td>
                                     <td>{x.status}</td>
                                     <td>
-                                        <div className='flex gap-1'><button className='btn rounded-full bg-amber-300'>View</button>
+                                        <div className='flex gap-1'>
+                                            <button onClick={()=>navigate(`/dashboard/request-details/${x._id}`)} className='btn rounded-full bg-amber-300'>View</button>
                                             <button className='btn rounded-full bg-amber-300'>Edit</button>
                                             <button className='btn rounded-full bg-amber-300'>Delete</button>
                                             {
                                                 (x.status == "inprogress") &&
-                                                <div> <button className='btn rounded-full bg-amber-300'>Cancel</button>
+                                                <div className='flex gap-1'> <button className='btn rounded-full bg-amber-300'>Cancel</button>
                                                     <button className='btn rounded-full bg-amber-300'>Done</button></div>
                                             }
                                         </div>
@@ -100,7 +103,7 @@ const DashboardHome = () => {
                     </table>
                 </div>
             }
-
+            <div><NavLink to='/dashboard/my-donation-requests'><button className='btn bg-amber-300 mx-auto flex mt-5 rounded-full font-semibold text-md'>View all requests</button></NavLink></div>
         </div>
     );
 };
