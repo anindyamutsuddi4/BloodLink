@@ -1,13 +1,32 @@
 import React, { use } from 'react';
 import { AuthContext } from './AuthContext';
+import useAxiosSecure from '../useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const DashboardHome = () => {
     const { user } = use(AuthContext)
+    const axiosSecure = useAxiosSecure()
+    // const [filter, setFilter] = useState('all');
+    // const [totalpage, settotalpage] = useState(0)
+    //  const [currentpage, setcurrentpage] = useState(0)
+    const limit = 3
+    const { data: response = { data: [], totalCount: 0 } } = useQuery({
+        queryKey: ['users', user?.email],
+        enabled: !!user?.email,
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/requests/${user.email}?limit=${limit}`)
+            return res.data
+        }
+    })
+
+
+    const items = response.data;
+
     return (
         <div>
             <section className=" text-white">
-                <div className="max-w-6xl mx-auto px-6 py-10 sm:py-18">
-                    <div className="bg-white/6 backdrop-blur-md rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/10">
+                <div className="max-w-6xl  mx-auto px-6 py-10 sm:py-18">
+                    <div className="bg-[#12372A] backdrop-blur-md rounded-3xl p-8 sm:p-12 shadow-2xl border border-white/10">
                         <div className="flex items-center gap-6">
                             <div className="flex-shrink-0">
                                 <div className="w-20 h-20 rounded-full bg-white/10 ring-2 ring-white/20 flex items-center justify-center">
@@ -37,6 +56,51 @@ const DashboardHome = () => {
                     </div>
                 </div>
             </section>
+            {
+                response.totalCount > 0 &&
+                <div className="overflow-x-auto mx-5 md:mx-10 border rounded-xl border-amber-400">
+                    <table className="table w-full bg-[#edf4e5] text-sm sm:text-base">
+                        <thead>
+                            <tr className="bg-[#12372A] text-white text-[14px] sm:text-[16px] md:text-[18px] font-md">
+                                <th></th>
+                                <th>Recipient Name</th>
+                                <th>Division</th>
+                                <th>District</th>
+                                <th>Blood Group</th>
+                                <th>Date & time</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {items.map((x, i) => (
+                                <tr key={x._id}>
+                                    <th>{i + 1}</th>
+                                    <td>{x.recipientname}</td>
+                                    <td>{x.recipientdivision}</td>
+                                    <td>{x.recipientdistrict}</td>
+                                    <td >{x.bloodgroup}</td>
+                                    <td>{new Date(x.createdAt).toLocaleString('en-GB')}</td>
+                                    <td>{x.status}</td>
+                                    <td>
+                                        <div className='flex gap-1'><button className='btn rounded-full bg-amber-300'>View</button>
+                                            <button className='btn rounded-full bg-amber-300'>Edit</button>
+                                            <button className='btn rounded-full bg-amber-300'>Delete</button>
+                                            {
+                                                (x.status == "inprogress") &&
+                                                <div> <button className='btn rounded-full bg-amber-300'>Cancel</button>
+                                                    <button className='btn rounded-full bg-amber-300'>Done</button></div>
+                                            }
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            }
+
         </div>
     );
 };

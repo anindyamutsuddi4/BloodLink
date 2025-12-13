@@ -63,20 +63,20 @@ const Requestforblood = () => {
             .catch(error => console.log(error))
     }
     return (
-        <div className='bg-[#f0e2e2] relative pt-19'>
+        <div className=' relative pt-10'>
 
-            <FaTint className="w-23 h-23 text-red-900 absolute right-15 top-4" />
-            <BsFillHeartPulseFill className="w-30 h-30 -rotate-9 animate-pulse text-red-900 absolute right-258 top-57" />
-            <div className="text-center mb-8">
-                <h1 className="text-4xl text-gray-800 sm:text-5xl lg:text-6xl font-extrabold bg-clip-text  drop-shadow-lg">
+            <FaTint className="w-23 h-23 text-red-900 absolute right-15 top-7" />
+            <BsFillHeartPulseFill className="w-30 h-30 -rotate-9 animate-pulse text-red-900 absolute right-257 top-73" />
+            <div className="text-center bg-[#12372A] border-amber-300 border-2 p-12 mx-50 rounded-3xl mb-8">
+                <h1 className="text-4xl text-amber-300  sm:text-5xl lg:text-6xl font-extrabold bg-clip-text  drop-shadow-lg">
                     Request Blood, Save Lives
                 </h1>
-                <p className="mt-3 text-lg sm:text-xl text-primary max-w-2xl mx-auto">
+                <p className="mt-3 text-lg sm:text-xl text-white max-w-2xl mx-auto">
                     Fill out the form below to request blood for someone in need. Your request can make a difference—every drop counts.
                 </p>
             </div>
 
-            <div className="min-h-screen pt-5 flex justify-center items-start bg-[#f0e2e2] p-6">
+            <div className="min-h-screen pt-5 flex justify-center items-start  p-6">
 
                 <form
                     onSubmit={handleSubmit(onSubmit)}
