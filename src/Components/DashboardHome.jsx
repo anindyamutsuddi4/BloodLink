@@ -3,6 +3,7 @@ import { AuthContext } from './AuthContext';
 import useAxiosSecure from '../useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import { NavLink, useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
 const DashboardHome = () => {
     const { user } = use(AuthContext)
@@ -12,7 +13,7 @@ const DashboardHome = () => {
     // const [totalpage, settotalpage] = useState(0)
     //  const [currentpage, setcurrentpage] = useState(0)
     const limit = 3
-    const { data: response = { data: [], totalCount: 0 } } = useQuery({
+    const { refetch, data: response = { data: [], totalCount: 0 } } = useQuery({
         queryKey: ['users', user?.email],
         enabled: !!user?.email,
         queryFn: async () => {
@@ -21,7 +22,30 @@ const DashboardHome = () => {
         }
     })
 
-
+    const changedata = id => {
+        const data = { status: "done" }
+        axiosSecure.patch(`/requests/${id}`, data)
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    //console.log("ok")
+                    toast('Status is updated successfully')
+                    refetch()
+                }
+            })
+            .catch(err => console.error(err));
+    }
+    const changedata2 = id => {
+        const data = { status: "cancelled" }
+        axiosSecure.patch(`/requests/${id}`, data)
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    //console.log("ok")
+                    toast('Status is updated successfully')
+                    refetch()
+                }
+            })
+            .catch(err => console.error(err));
+    }
     const items = response.data;
 
     return (
@@ -80,19 +104,19 @@ const DashboardHome = () => {
                                     <th>{i + 1}</th>
                                     <td>{x.recipientname}</td>
                                     <td>{x.recipientdivision}</td>
-                                    <td>{x.recipientdistrict}</td>
+                                    <td >{x.recipientdistrict}</td>
                                     <td >{x.bloodgroup}</td>
-                                    <td>{new Date(x.createdAt).toLocaleString('en-GB')}</td>
-                                    <td>{x.status}</td>
+                                    <td >{x.donationDate} {x.donationTime}</td>
+                                    <td >{x.status}</td>
                                     <td>
-                                        <div className='flex gap-1'>
-                                            <button onClick={()=>navigate(`/dashboard/request-details/${x._id}`)} className='btn rounded-full bg-amber-300'>View</button>
-                                            <button className='btn rounded-full bg-amber-300'>Edit</button>
-                                            <button className='btn rounded-full bg-amber-300'>Delete</button>
+                                        <div className='flex gap-1 justify-center'>
+                                            <button onClick={() => navigate(`/dashboard/request-details/${x._id}`)} className='btn rounded-full bg-amber-300'>View</button>
+                                            <button onClick={() => navigate(`/dashboard/patch-request/${x._id}`)} className='btn rounded-full bg-amber-300'>Edit</button>
+                                            <button className='btn rounded-full text-white bg-red-800'>Delete</button>
                                             {
                                                 (x.status == "inprogress") &&
-                                                <div className='flex gap-1'> <button className='btn rounded-full bg-amber-300'>Cancel</button>
-                                                    <button className='btn rounded-full bg-amber-300'>Done</button></div>
+                                                <div className='flex gap-1'> <button onClick={() => changedata2(x._id)} className='btn rounded-full text-white bg-gray-400'>Cancel</button>
+                                                    <button onClick={() => changedata(x._id)} className='btn rounded-full text-white bg-green-700'>Done</button></div>
                                             }
                                         </div>
 

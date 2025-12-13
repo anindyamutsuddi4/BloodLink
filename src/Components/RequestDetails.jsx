@@ -19,7 +19,7 @@ const RequestDetails = () => {
         }
     })
     return (
-        <div className='bg-[#d5c6b7] h-screen w-screen'>
+        <div className='bg-[#d5c6b7] h-screen max-w-screen'>
             <div className="flex sm:ml-5 pl-2 sm:pl-5 justify-center items-start md:gap-4  sm:gap-1 mx-auto pt-4 flex-nowrap">
 
                 <div className="flex-shrink-0 w-[70%] sm:w-[70%] md:w-[48%] lg:w-[400px] max-w-full bg-white dark:bg-gray-800 rounded-2xl shadow-md border border-gray-200 dark:border-gray-700">
@@ -57,7 +57,8 @@ const RequestDetails = () => {
 
                             <div className="flex justify-between col-span-2 items-center gap-4 sm:gap-8">
                                 <p className="text-xs sm:text-sm md:text-base">
-                                    <span className="font-semibold">Requested At:</span> {new Date(x.createdAt).toLocaleString('en-GB')}
+                                    <span className="font-semibold">Requested At:</span> {x.donationDate} <br />
+                                    {x.donationTime}
                                 </p>
                                 <button
                                     className="btn rounded-full bg-amber-300 text-xs sm:text-sm md:text-base"

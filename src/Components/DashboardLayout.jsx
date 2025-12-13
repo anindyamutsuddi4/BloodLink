@@ -41,9 +41,9 @@ const DashboardLayout = () => {
                     {/* <div className="p-4">Page Content</div> */}
                 </div>
 
-                <div className="drawer-side text-gray-200  is-drawer-close:overflow-visible">
+                <div className="drawer-side h-screen text-gray-200  is-drawer-close:overflow-visible">
                     <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-                    <div className="flex bg-primary min-h-full flex-col items-start  is-drawer-close:w-21 is-drawer-open:w-64 hover:is-drawer-open:w-64">
+                    <div className="flex bg-primary min-h-full  flex-col items-start  is-drawer-close:w-21 is-drawer-open:w-64 hover:is-drawer-open:w-64">
                         {/* Sidebar content here */}
                         <ul className="menu w-full grow">
                             {/* List item */}

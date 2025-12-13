@@ -9,6 +9,7 @@ import DonationRequest from "./Components/DonationRequest";
 import DashboardHome from "./Components/DashboardHome";
 import Requestforblood from "./Components/Requestforblood";
 import RequestDetails from "./Components/RequestDetails";
+import PatchRequest from "./Components/PatchRequest";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -38,6 +39,9 @@ export const router = createBrowserRouter([
             }, {
                 path: "/dashboard/request-details/:id",
                 element: <Privateroute><RequestDetails></RequestDetails></Privateroute>
+            }, {
+                path: "/dashboard/patch-request/:id",
+                element: <Privateroute><PatchRequest></PatchRequest></Privateroute>
             }
             ]
         }]

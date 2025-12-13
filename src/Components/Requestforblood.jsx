@@ -37,7 +37,7 @@ const Requestforblood = () => {
     }
 
     const onSubmit = data => {
-        console.log(data);
+        //console.log(data);
 
         const userinfo = {
             email: user.email,
@@ -48,8 +48,8 @@ const Requestforblood = () => {
             hospital: data.hospital,
             fulladdress: data.fulladdress,
             bloodgroup: data.bloodgroup,
-            data: data.date,
-            time: data.time,
+            donationDate: data.donationDate,
+            donationTime: data.donationTime,
             requestMessage: data.requestMessage,
         }
         // send data to backend via axios/axiosSecure
