@@ -7,9 +7,10 @@ import { toast } from 'react-toastify';
 import { useRef } from "react";
 import { BsFillPinFill } from "react-icons/bs";
 import { RiEditCircleFill } from "react-icons/ri";
+import useRole from './useRole';
 const DashboardHome = () => {
     const { user } = use(AuthContext)
-
+    const { role } = useRole()
     const [deleteid, setdeleteid] = useState(0)
     const modalRef = useRef(null);
 
@@ -63,6 +64,8 @@ const DashboardHome = () => {
             })
             .catch(err => console.error(err));
     }
+
+    // console.log(response3)
     const items = response.data;
 
     return (
@@ -107,100 +110,105 @@ const DashboardHome = () => {
             <RiEditCircleFill className='lg:absolute lg:ml-70 lg:z-1 lg:right-53 lg:text-red-800 lg:text-3xl lg:top-135'/>
             <img className='h-0 w-0 lg:h-50 lg:w-35 lg:ml-70  lg:absolute lg:right-51 lg:-rotate-59 lg:top-86' src="/public/d2e51c6215d3305a451d1f922f72e3e7.jpg" alt="" /> */}
             {
-                response.totalCount > 0 &&
-                <div>
-                    <div
-                        className="max-w-md sm:max-w-xl mx-5 md:mx-10 lg:max-w-4xl   px-6 py-5 rounded-t-2xl shadow-2xl bg-[#A66253]  bg-cover bg-center"
-                    //style={{ backgroundImage: "url('254df386e48ff8180ee6a9588401a995.jpg')" }}
-                    >
-                        <div className="text-center flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                            <div>
-                                <h2 className="text-xl mx-auto justify-center text-center flex sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight">
-                                    Here are all your recent requests
-                                </h2>
-                                <p className="mt-1 mx-auto  justify-center flex text-center text-white/90 sm:text-sm md:text-base">
-                                    Check the status of your recent blood donation requests below. Every action matters!
-                                </p>
+                (role != "admin" && role != "volunteer") && <>
+                    {
+                        response.totalCount > 0 &&
+                        <div>
+                            <div
+                                className="max-w-md sm:max-w-xl mx-5 md:mx-10 lg:max-w-4xl   px-6 py-5 rounded-t-2xl shadow-2xl bg-[#A66253]  bg-cover bg-center"
+                            //style={{ backgroundImage: "url('254df386e48ff8180ee6a9588401a995.jpg')" }}
+                            >
+                                <div className="text-center flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                                    <div>
+                                        <h2 className="text-xl mx-auto justify-center text-center flex sm:text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+                                            Here are all your recent requests
+                                        </h2>
+                                        <p className="mt-1 mx-auto  justify-center flex text-center text-white/90 sm:text-sm md:text-base">
+                                            Check the status of your recent blood donation requests below. Every action matters!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="overflow-x-auto mx-5 md:mx-10 border rounded-xl border-amber-400">
+                                <table className="table w-full bg-[#edf4e5] text-sm sm:text-base">
+                                    <thead>
+                                        <tr className="bg-[#12372A] text-white text-[14px] sm:text-[16px] md:text-[18px] font-md">
+                                            <th></th>
+                                            <th>Recipient Name</th>
+                                            <th>Division</th>
+                                            <th>District</th>
+                                            <th>Blood Group</th>
+                                            <th>Date & time</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {items.map((x, i) => (
+                                            <tr key={x._id}>
+                                                <th>{i + 1}</th>
+                                                <td>{x.recipientname}</td>
+                                                <td>{x.recipientdivision}</td>
+                                                <td >{x.recipientdistrict}</td>
+                                                <td >{x.bloodgroup}</td>
+                                                <td >{x.donationDate} {x.donationTime}</td>
+                                                <td >{x.status}</td>
+                                                <td>
+                                                    <div className='flex gap-1 justify-center'>
+                                                        <button onClick={() => navigate(`/dashboard/request-details/${x._id}`)} className='btn rounded-full bg-amber-300'>View</button>
+                                                        <button onClick={() => navigate(`/dashboard/patch-request/${x._id}`)} className='btn rounded-full bg-amber-300'>Edit</button>
+                                                        <button onClick={() => {
+                                                            modalRef.current.showModal()
+                                                            setdeleteid(x._id)
+                                                        }} className='btn rounded-full text-white bg-red-800'>Delete</button>
+                                                        {
+                                                            (x.status == "inprogress") &&
+                                                            <div className='flex gap-1'> <button onClick={() => changedata2(x._id)} className='btn rounded-full text-white bg-gray-400'>Cancel</button>
+                                                                <button onClick={() => changedata(x._id)} className='btn rounded-full text-white bg-green-700'>Done</button></div>
+                                                        }
+                                                    </div>
+
+                                                </td>
+                                            </tr>
+                                        ))
+
+
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div><NavLink to='/dashboard/my-donation-requests'><button className='btn bg-amber-300 mx-auto flex mt-5 rounded-full font-semibold text-md'>View all requests</button></NavLink></div>
+                        </div>
+                    }
+                    <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">Confirm action</h3>
+                            <p className="py-4">Are you sure you want to delete?</p>
+                            <div className="modal-action">
+                                <button
+                                    className="btn bg-red-700 text-white"
+                                    onClick={() => modalRef.current.close()}
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    className="btn bg-green-700 text-white"
+                                    onClick={() => {
+                                        // do something
+                                        deleterequest(deleteid)
+                                        modalRef.current.close();
+                                    }}
+                                >
+                                    Confirm
+                                </button>
                             </div>
                         </div>
-                    </div>
-
-                    <div className="overflow-x-auto mx-5 md:mx-10 border rounded-xl border-amber-400">
-                        <table className="table w-full bg-[#edf4e5] text-sm sm:text-base">
-                            <thead>
-                                <tr className="bg-[#12372A] text-white text-[14px] sm:text-[16px] md:text-[18px] font-md">
-                                    <th></th>
-                                    <th>Recipient Name</th>
-                                    <th>Division</th>
-                                    <th>District</th>
-                                    <th>Blood Group</th>
-                                    <th>Date & time</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {items.map((x, i) => (
-                                    <tr key={x._id}>
-                                        <th>{i + 1}</th>
-                                        <td>{x.recipientname}</td>
-                                        <td>{x.recipientdivision}</td>
-                                        <td >{x.recipientdistrict}</td>
-                                        <td >{x.bloodgroup}</td>
-                                        <td >{x.donationDate} {x.donationTime}</td>
-                                        <td >{x.status}</td>
-                                        <td>
-                                            <div className='flex gap-1 justify-center'>
-                                                <button onClick={() => navigate(`/dashboard/request-details/${x._id}`)} className='btn rounded-full bg-amber-300'>View</button>
-                                                <button onClick={() => navigate(`/dashboard/patch-request/${x._id}`)} className='btn rounded-full bg-amber-300'>Edit</button>
-                                                <button onClick={() => {
-                                                    modalRef.current.showModal()
-                                                    setdeleteid(x._id)
-                                                }} className='btn rounded-full text-white bg-red-800'>Delete</button>
-                                                {
-                                                    (x.status == "inprogress") &&
-                                                    <div className='flex gap-1'> <button onClick={() => changedata2(x._id)} className='btn rounded-full text-white bg-gray-400'>Cancel</button>
-                                                        <button onClick={() => changedata(x._id)} className='btn rounded-full text-white bg-green-700'>Done</button></div>
-                                                }
-                                            </div>
-
-                                        </td>
-                                    </tr>
-                                ))
-
-
-                                }
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div><NavLink to='/dashboard/my-donation-requests'><button className='btn bg-amber-300 mx-auto flex mt-5 rounded-full font-semibold text-md'>View all requests</button></NavLink></div>
-                </div>
+                    </dialog>
+                </>
             }
-            <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
-                <div className="modal-box">
-                    <h3 className="font-bold text-lg">Confirm action</h3>
-                    <p className="py-4">Are you sure you want to delete?</p>
-                    <div className="modal-action">
-                        <button
-                            className="btn bg-red-700 text-white"
-                            onClick={() => modalRef.current.close()}
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            className="btn bg-green-700 text-white"
-                            onClick={() => {
-                                // do something
-                                deleterequest(deleteid)
-                                modalRef.current.close();
-                            }}
-                        >
-                            Confirm
-                        </button>
-                    </div>
-                </div>
-            </dialog>
+
 
         </div>
     );
