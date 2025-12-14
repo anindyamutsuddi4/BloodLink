@@ -12,6 +12,7 @@ const DashboardLayout = () => {
     const { user } = use(AuthContext)
     console.log(user.displayName)
     //eta kintu object
+    console.log(role)
     return (
         <div className='pt-17'>
             <div className="drawer min-h-screen lg:drawer-open">

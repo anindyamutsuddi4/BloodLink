@@ -52,7 +52,7 @@ const AllUsersDashboard = () => {
     //console.log(items)
     const total = Math.ceil(response.totalCount / limit || 0)
     return (
-        <div className='bg-[#BFC0AB] pb-5'>
+        <div className='bg-[#BFC0AB] min-h-screen pb-5'>
             <div className="ml-4 sm:ml-10 md:ml-20 lg:ml-40">
                 <div className="px-4 py-6 sm:py-8 md:py-10">
                     <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#395f50]  text-center sm:text-left">

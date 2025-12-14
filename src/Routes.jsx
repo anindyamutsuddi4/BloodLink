@@ -13,6 +13,9 @@ import PatchRequest from "./Components/PatchRequest";
 import AdminHomePage from "./Components/AdminHomePage";
 import AllUsersDashboard from "./Components/AllUsersDashboard";
 import AllDonationRequests from "./Components/AllDonationRequests";
+import AdminRoute from "./Components/AdminRoute";
+import ForbiddenAccess from "./Components/ForbiddenAccess";
+import Login from "./Components/Login";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -23,6 +26,13 @@ export const router = createBrowserRouter([
         }, {
             path: "/register",
             Component: Register
+        }, {
+            path: "/login",
+            Component: Login
+        }, {
+            path: "/forbidden",
+            Component: ForbiddenAccess
+
         }, {
             path: "/dashboard",
             element: <Privateroute><DashboardLayout></DashboardLayout></Privateroute>,
@@ -47,13 +57,13 @@ export const router = createBrowserRouter([
                 element: <Privateroute><PatchRequest></PatchRequest></Privateroute>
             }, {
                 path: '/dashboard/admin',
-                element: <Privateroute><AdminHomePage></AdminHomePage></Privateroute>
+                element: <Privateroute><AdminRoute> <AdminHomePage></AdminHomePage></AdminRoute></Privateroute>
             }, {
                 path: "/dashboard/all-users",
-                element: <Privateroute><AllUsersDashboard></AllUsersDashboard></Privateroute>
+                element: <Privateroute><AdminRoute><AllUsersDashboard></AllUsersDashboard></AdminRoute></Privateroute>
             }, {
                 path: "/dashboard/all-blood-donation-request",
-                element: <Privateroute><AllDonationRequests></AllDonationRequests></Privateroute>
+                element: <Privateroute><AdminRoute><AllDonationRequests></AllDonationRequests></AdminRoute></Privateroute>
             }
             ]
         }]
