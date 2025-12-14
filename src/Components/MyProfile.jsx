@@ -42,7 +42,7 @@ const MyProfile = () => {
         </div>
     }
     return (
-        <div className="min-h-screen flex  p-6 ">
+        <div className="min-h-screen flex bg-[#BFC0AB] p-6 ">
             <div className="flex w-full max-w-6xl gap-8">
                 <div className="w-1/2 flex justify-center pt-30 ">
                     <div className="max-w-[500px] w-[430px] mx-auto p-4">

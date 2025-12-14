@@ -10,6 +10,9 @@ import DashboardHome from "./Components/DashboardHome";
 import Requestforblood from "./Components/Requestforblood";
 import RequestDetails from "./Components/RequestDetails";
 import PatchRequest from "./Components/PatchRequest";
+import AdminHomePage from "./Components/AdminHomePage";
+import AllUsersDashboard from "./Components/AllUsersDashboard";
+import AllDonationRequests from "./Components/AllDonationRequests";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -42,6 +45,15 @@ export const router = createBrowserRouter([
             }, {
                 path: "/dashboard/patch-request/:id",
                 element: <Privateroute><PatchRequest></PatchRequest></Privateroute>
+            }, {
+                path: '/dashboard/admin',
+                element: <Privateroute><AdminHomePage></AdminHomePage></Privateroute>
+            }, {
+                path: "/dashboard/all-users",
+                element: <Privateroute><AllUsersDashboard></AllUsersDashboard></Privateroute>
+            }, {
+                path: "/dashboard/all-blood-donation-request",
+                element: <Privateroute><AllDonationRequests></AllDonationRequests></Privateroute>
             }
             ]
         }]

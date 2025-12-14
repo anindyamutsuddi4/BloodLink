@@ -1,52 +1,82 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { use, useState } from 'react';
+import React, { use, useRef, useState } from 'react';
 import { RiGolfBallFill } from "react-icons/ri";
 import { AuthContext } from './AuthContext';
 import useAxiosSecure from '../useAxiosSecure'
 import { MdArrowDropDownCircle } from "react-icons/md";
-const DonationRequest = () => {
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router';
+
+const AllDonationRequests = () => {
+    const [deleteid, setdeleteid] = useState(0)
+    const navigate = useNavigate()
+    const modalRef = useRef(null);
     const { user } = use(AuthContext)
     const axiosSecure = useAxiosSecure()
     const [filter, setFilter] = useState('all');
     // const [totalpage, settotalpage] = useState(0)
     const [currentpage, setcurrentpage] = useState(0)
-    const limit = 2
-    const { data: response = { data: [], totalCount: 0 } } = useQuery({
-        queryKey: ['users', user?.email, currentpage, filter],
+    const limit = 8
+    const { refetch, data: response = { data: [], totalCount: 0 } } = useQuery({
+        queryKey: ['users', currentpage, filter],
         enabled: !!user?.email,
         queryFn: async () => {
-            const res = await axiosSecure.get(`/requests/${user.email}?limit=${limit}&skip=${currentpage * limit}&filter=${filter}`)
+            const res = await axiosSecure.get(`/allrequests/?limit=${limit}&skip=${currentpage * limit}&filter=${filter}`)
             return res.data
         }
     })
-
+    const changedata = id => {
+        const data = { status: "done" }
+        axiosSecure.patch(`/requests/${id}`, data)
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    //console.log("ok")
+                    toast('Status is updated successfully')
+                    refetch()
+                }
+            })
+            .catch(err => console.error(err));
+    }
+    const changedata2 = id => {
+        const data = { status: "cancelled" }
+        axiosSecure.patch(`/requests/${id}`, data)
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    //console.log("ok")
+                    toast('Status is updated successfully')
+                    refetch()
+                }
+            })
+            .catch(err => console.error(err));
+    }
+    const deleterequest = id => {
+        axiosSecure.delete(`/requests/${id}`)
+            .then(res => {
+                if (res.data.deletedCount) {
+                    //console.log("ok")
+                    toast('Request deleted successfully')
+                    refetch()
+                }
+            })
+            .catch(err => console.error(err));
+    }
 
     const items = response.data;
     const total = Math.ceil(response.totalCount / limit || 0)
     return (
-        <div className='h-screen'>
+        <div className='min-h-screen pb-5 bg-[#BFC0AB]'>
             <div className="w-full flex justify-center relative mt-5 px-2 sm:px-4">
-                <RiGolfBallFill
-                    className="w-4 h-4 sm:w-5 sm:h-5 z-1 text-red-900 absolute 
-               top-2 sm:top-3 
-               right-4 sm:right-28 md:right-52 lg:right-266"
-                />
-                <RiGolfBallFill
-                    className="w-4 h-4 sm:w-5 z-1 sm:h-5 text-red-900 absolute 
-               top-2 sm:top-3 
-               right-10 sm:right-40 md:right-72 lg:right-88"
-                />
-
+             
                 <div className="w-full max-w-md sm:max-w-xl md:max-w-2xl lg:max-w-3xl mb-6 sm:mb-8">
-                    <div className="bg-gradient-to-r from-red-600/10 to-red-900/10 
-                    backdrop-blur-lg p-6 sm:p-8 md:p-10 rounded-2xl 
-                    border border-red-300/20 shadow-lg text-center">
+                    <div className="bg-[#4D554C]
+                     p-6 sm:p-8 md:p-10 rounded-2xl 
+                      border-4 border-dotted border-white shadow-xl text-center">
 
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-amber-600 tracking-wide">
-                            Your Blood Requests
+                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-wide">
+                            All Blood Requests
                         </h1>
 
-                        <p className="text-base sm:text-lg md:text-xl text-red-800 mt-1">
+                        <p className="text-base sm:text-lg md:text-xl text-white mt-1">
                             View and manage all the blood donation requests you’ve submitted.
                         </p>
 
@@ -97,6 +127,7 @@ const DonationRequest = () => {
                                         <th>District</th>
                                         <th>Blood Group</th>
                                         <th>Status</th>
+                                        <th className='text-center'>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -108,6 +139,23 @@ const DonationRequest = () => {
                                             <td>{x.recipientdistrict}</td>
                                             <td className='mx-auto' > <div >{x.bloodgroup}</div></td>
                                             <td>{x.status}</td>
+                                            <td>
+                                                <div className='flex gap-1 justify-center'>
+                                                    <button onClick={() => navigate(`/dashboard/request-details/${x._id}`)} className='btn rounded-full bg-amber-300'>View</button>
+                                    
+                                                    <button onClick={() => {
+                                                        modalRef.current.showModal()
+                                                        setdeleteid(x._id)
+                                                    }} className='btn rounded-full text-white bg-red-800'>Delete</button>
+                                                    {
+                                                        (x.status == "inprogress") &&
+                                                        <div className='flex gap-1'> <button onClick={() => changedata2(x._id)} className='btn rounded-full text-white bg-gray-400'>Cancel</button>
+                                                            <button onClick={() => changedata(x._id)} className='btn rounded-full text-white bg-green-700'>Done</button></div>
+                                                    }
+
+                                                </div>
+
+                                            </td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -154,10 +202,34 @@ const DonationRequest = () => {
                 </div>
             )}
 
+            <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Confirm action</h3>
+                    <p className="py-4">Are you sure you want to delete?</p>
+                    <div className="modal-action">
+                        <button
+                            className="btn bg-red-700 text-white"
+                            onClick={() => modalRef.current.close()}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            className="btn bg-green-700 text-white"
+                            onClick={() => {
+                                // do something
+                                deleterequest(deleteid)
+                                modalRef.current.close();
+                            }}
+                        >
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </dialog>
 
 
         </div >
     );
 };
 
-export default DonationRequest;
+export default AllDonationRequests;
