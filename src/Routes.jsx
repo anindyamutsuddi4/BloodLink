@@ -18,6 +18,9 @@ import ForbiddenAccess from "./Components/ForbiddenAccess";
 import Login from "./Components/Login";
 import VolunteerDonationRequests from "./Components/VolunteerDonationRequests";
 import VolunteerDashboard from "./Components/VolunteerDashboard";
+import VolunteerRoute from "./Components/VolunteerRoute";
+import SearchPage from "./Components/SearchPage";
+import PublicDonationRequest from "./Components/PublicDonationRequest";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -31,6 +34,13 @@ export const router = createBrowserRouter([
         }, {
             path: "/login",
             Component: Login
+        }, {
+            path: "/searchpage",
+            Component: SearchPage
+
+        }, {
+            path: "/public-donation-request",
+            Component: PublicDonationRequest
         }, {
             path: "/forbidden",
             Component: ForbiddenAccess
@@ -68,10 +78,10 @@ export const router = createBrowserRouter([
                 element: <Privateroute><AdminRoute><AllDonationRequests></AllDonationRequests></AdminRoute></Privateroute>
             }, {
                 path: "/dashboard/volunteer/all-blood-donation-request",
-                element: <Privateroute><VolunteerDonationRequests></VolunteerDonationRequests></Privateroute>
+                element: <Privateroute><VolunteerRoute> <VolunteerDonationRequests></VolunteerDonationRequests></VolunteerRoute></Privateroute>
             }, {
                 path: '/dashboard/volunteer',
-                element: <Privateroute> <VolunteerDashboard></VolunteerDashboard></Privateroute>
+                element: <Privateroute><VolunteerRoute> <VolunteerDashboard></VolunteerDashboard></VolunteerRoute></Privateroute>
             }
             ]
         }]

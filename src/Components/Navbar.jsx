@@ -26,6 +26,10 @@ const Navbar = () => {
         <li>|</li>
         <li ><NavLink to="/register">Register</NavLink></li>
         <li>|</li>
+        <li ><NavLink to="/searchpage">Search</NavLink></li>
+        <li>|</li>
+        <li ><NavLink to="/public-donation-request">Request Donation</NavLink></li>
+        <li>|</li>
         {
             user
                 ? <li><button onClick={handlelogout}>Logout</button></li>
@@ -42,7 +46,7 @@ const Navbar = () => {
     </>
     return (
         <div>
-            <div className="navbar py-[10px] text-white fixed z-50  bg-red-200 px-6 backdrop-blur-xl">
+            <div className="navbar py-[10px] text-white fixed z-50  bg-white px-6 backdrop-blur-xl">
                 <div className="navbar-start ">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -62,7 +66,7 @@ const Navbar = () => {
 
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-4 items-center bg-red-900 rounded-4xl text-gray-200 font-semibold text-md">
+                    <ul className="menu menu-horizontal px-4 items-center  bg-[#6A040F]  rounded-4xl text-gray-200 font-semibold text-md">
 
                         {
                             list

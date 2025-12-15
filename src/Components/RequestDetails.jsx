@@ -1,16 +1,18 @@
-import React, { use } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import React, { use, useRef, useState } from 'react';
+import { useParams } from 'react-router';
 import { AuthContext } from './AuthContext';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosSecure from '../useAxiosSecure';
+import { toast } from 'react-toastify';
 
 const RequestDetails = () => {
+    const modalRef = useRef(null);
     const { id } = useParams()
     const { user } = use(AuthContext)
     const axiosSecure = useAxiosSecure()
-    const navigate = useNavigate()
+    const [requestId, setrequestid] = useState(0)
     //console.log(id)
-    const { data: x = [] } = useQuery({
+    const { refetch, data: x = [] } = useQuery({
         queryKey: ['users', id],
         enabled: !!user?.email,
         queryFn: async () => {
@@ -18,6 +20,20 @@ const RequestDetails = () => {
             return res.data
         }
     })
+    const updateStatus = id => {
+        const update = { status: "inprogress" }
+        axiosSecure.patch(`/requests/${id}`, update)
+          .then(res => {
+                        if (res.data.modifiedCount) {
+                            //console.log("ok")
+                            toast('Data updated successfully')
+                            refetch()
+                        }
+                    })
+                    .catch(err => console.error(err));
+        
+    }
+
     return (
         <div className='bg-[#d5c6b7] h-screen max-w-screen'>
             <div className="flex sm:ml-5 pl-2 sm:pl-5 justify-center items-start md:gap-4  sm:gap-1 mx-auto pt-4 flex-nowrap">
@@ -60,12 +76,21 @@ const RequestDetails = () => {
                                     <span className="font-semibold">Requested At:</span> {x.donationDate} <br />
                                     {x.donationTime}
                                 </p>
-                                <button
+                                {/* <button
                                     className="btn rounded-full bg-amber-300 text-xs sm:text-sm md:text-base"
                                     onClick={() => navigate(-1)}
                                 >
                                     Go Back
-                                </button>
+                                </button> */}
+                                {
+                                    x.status=="pending"?    <button onClick={() => {
+                                    modalRef.current.showModal()
+                                    setrequestid(x._id)
+                                    refetch()
+                                }} className="btn rounded-full bg-amber-300 text-xs sm:text-sm md:text-base">Donate</button>
+                                : <button  disabled className='btn rounded-full disabled:cursor-not-allowed bg-amber-300  text-xs sm:text-sm md:text-base'> Donate</button>
+                                }
+                            
                             </div>
                         </div>
                     </div>
@@ -80,6 +105,30 @@ const RequestDetails = () => {
 
 
             </div>
+            <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
+                <div className="modal-box">
+                    <h3 className="font-bold text-lg">Confirm action</h3>
+                    <p className="py-4">Are you sure you want to delete?</p>
+                    <div className="modal-action">
+                        <button
+                            className="btn bg-red-700 text-white"
+                            onClick={() => modalRef.current.close()}
+                        >
+                            Cancel
+                        </button>
+                        <button
+                            className="btn bg-green-700 text-white"
+                            onClick={() => {
+                                // do something
+                                updateStatus(requestId)
+                                modalRef.current.close();
+                            }}
+                        >
+                            Confirm
+                        </button>
+                    </div>
+                </div>
+            </dialog>
 
 
 

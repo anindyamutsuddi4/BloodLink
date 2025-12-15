@@ -70,7 +70,7 @@ const DashboardHome = () => {
 
     return (
         <div>
-            <section className="text-white flex justify-center">
+            <section className="text-white bg-[#E4d8cb] min-h-screen flex justify-center">
                 <div className="max-w-6xl mx-auto px-4 sm:px-8 py-8 sm:pt-12 pb-16 z-10">
                     <div className="bg-[#12372A] backdrop-blur-md rounded-3xl p-6 sm:p-12 shadow-2xl border border-white/10">
                         <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 gap-4 text-center sm:text-left">
