@@ -39,7 +39,7 @@ const SearchPage = () => {
         console.log(data)
     }
     return (
-        <div className="pt-24 h-screen flex justify-center bg-[#E4d8cb]">
+        <div className="pt-24 h-screen flex justify-center bg-gradient-to-b from-[#f6f1eb] to-[#e9dfd4]">
             <div className="w-full max-w-4xl px-4">
                 <div className="bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl border border-gray-200 p-6 md:p-8">
 

@@ -58,7 +58,7 @@ const Login = () => {
     //bg-[#E4d8cb]
     return (
         // <DocumentMeta {...meta}>
-       <div className="lg:flex bg-[#E4d8cb] min-h-screen pt-8">
+       <div className="lg:flex bg-gradient-to-b from-[#f6f1eb] to-[#e9dfd4] min-h-screen pt-8">
 
   <div
     className="

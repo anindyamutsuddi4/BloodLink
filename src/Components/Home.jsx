@@ -6,7 +6,7 @@ const Home = () => {
     const navigate = useNavigate()
     const { user } = use(AuthContext)
     return (
-        <div className='text-black pt-16 bg-[#eee7df] min-h-screen'>
+        <div className='text-black pt-16 bg-[#eee7df] min-h-screen w-full'>
 
             <section className="relative bg-gradient-to-r from-[#17483d] to-[#0f2f28] text-white overflow-hidden">
 
@@ -76,79 +76,77 @@ const Home = () => {
                 </div>
             </section>
             <section className="bg-gradient-to-b from-[#f6f1eb] to-[#e9dfd4] py-16 sm:py-20 px-4 sm:px-6 lg:px-12">
-  <div className="max-w-7xl mx-auto">
-
-    {/* Heading */}
-    <div className="text-center max-w-3xl mx-auto mb-12">
-      <h2 className="text-3xl border-b-4 pb-5 border-b-yellow-200 sm:text-4xl md:text-5xl font-extrabold text-[#12372A] leading-tight">
-        Our Intentions behind this platform
-      </h2>
-      {/* <p className="mt-4 text-base sm:text-lg text-gray-600">
+                <div className="max-w-7xl mx-auto">
+                    <div className="text-center max-w-3xl mx-auto mb-12">
+                        <h2 className="text-3xl border-b-4 pb-5 border-b-yellow-200 sm:text-4xl md:text-5xl font-extrabold text-[#12372A] leading-tight">
+                            Our Intentions behind this platform
+                        </h2>
+                        {/* <p className="mt-4 text-base sm:text-lg text-gray-600">
         Why we built this platform
       </p> */}
-    </div>
-    <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-xl border border-gray-200 p-6 sm:p-10 lg:p-14">
-      
-      <p className="text-center text-lg sm:text-xl md:text-2xl font-medium text-gray-800 max-w-4xl mx-auto leading-relaxed">
-        We created this platform with one clear purpose —  
-        <span className="text-[#17483d] font-semibold">
-          to connect people who are willing to donate blood with those who need it most, without delay.
-        </span>
-      </p>
+                    </div>
+                    <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-xl border border-gray-200 p-6 sm:p-10 lg:p-14">
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+                        <p className="text-center text-lg sm:text-xl md:text-2xl font-medium text-gray-800 max-w-4xl mx-auto leading-relaxed">
+                            We created this platform with one clear purpose —
+                            <span className="text-[#17483d] font-semibold">
+                                to connect people who are willing to donate blood with those who need it most, without delay.
+                            </span>
+                        </p>
 
-        <div className="rounded-2xl border border-amber-300 p-6 text-center hover:shadow-lg transition">
-          <div className="text-3xl mb-3"></div>
-          <h3 className="font-semibold text-lg text-gray-800 mb-2">
-            Faster Access
-          </h3>
-          <p className="text-sm text-gray-600">
-            Reduce delays by directly connecting donors and recipients in urgent moments.
-          </p>
-        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
 
-        <div className="rounded-2xl border border-amber-300 p-6 text-center hover:shadow-lg transition">
-          <div className="text-3xl mb-3"></div>
-          <h3 className="font-semibold text-lg text-gray-800 mb-2">
-            Trusted Requests
-          </h3>
-          <p className="text-sm text-gray-600">
-            Clear and verified information to build confidence and transparency.
-          </p>
-        </div>
+                            <div className="rounded-2xl border border-amber-300 p-6 text-center hover:shadow-lg transition">
+                                <div className="text-3xl mb-3"></div>
+                                <h3 className="font-semibold text-lg text-gray-800 mb-2">
+                                    Faster Access
+                                </h3>
+                                <p className="text-sm text-gray-600">
+                                    Reduce delays by directly connecting donors and recipients in urgent moments.
+                                </p>
+                            </div>
 
-        <div className="rounded-2xl border border-amber-300 p-6 text-center hover:shadow-lg transition">
-          <div className="text-3xl mb-3"></div>
-          <h3 className="font-semibold text-lg text-gray-800 mb-2">
-            Simple Process
-          </h3>
-          <p className="text-sm text-gray-600">
-            No complexity. Just the information needed to take action quickly.
-          </p>
-        </div>
+                            <div className="rounded-2xl border border-amber-300 p-6 text-center hover:shadow-lg transition">
+                                <div className="text-3xl mb-3"></div>
+                                <h3 className="font-semibold text-lg text-gray-800 mb-2">
+                                    Trusted Requests
+                                </h3>
+                                <p className="text-sm text-gray-600">
+                                    Clear and verified information to build confidence and transparency.
+                                </p>
+                            </div>
 
-        <div className="rounded-2xl border border-amber-300 p-6 text-center hover:shadow-lg transition">
-          <div className="text-3xl mb-3"></div>
-          <h3 className="font-semibold text-lg text-gray-800 mb-2">
-            Human Impact
-          </h3>
-          <p className="text-sm text-gray-600">
-            Turning compassion into real-life impact, one donation at a time.
-          </p>
-        </div>
+                            <div className="rounded-2xl border border-amber-300 p-6 text-center hover:shadow-lg transition">
+                                <div className="text-3xl mb-3"></div>
+                                <h3 className="font-semibold text-lg text-gray-800 mb-2">
+                                    Simple Process
+                                </h3>
+                                <p className="text-sm text-gray-600">
+                                    No complexity. Just the information needed to take action quickly.
+                                </p>
+                            </div>
 
-      </div>
-      <div className="mt-14 text-center max-w-4xl mx-auto">
-        <p className="text-lg sm:text-xl italic text-gray-700">
-          “Saving a life shouldn’t depend on luck or reach —  
-          it should depend on care, connection, and timely action.”
-        </p>
-      </div>
+                            <div className="rounded-2xl border border-amber-300 p-6 text-center hover:shadow-lg transition">
+                                <div className="text-3xl mb-3"></div>
+                                <h3 className="font-semibold text-lg text-gray-800 mb-2">
+                                    Human Impact
+                                </h3>
+                                <p className="text-sm text-gray-600">
+                                    Turning compassion into real-life impact, one donation at a time.
+                                </p>
+                            </div>
 
-    </div>
-  </div>
-</section>
+                        </div>
+                        <div className="mt-14 text-center max-w-4xl mx-auto">
+                            <p className="text-lg sm:text-xl italic text-gray-700">
+                                “Saving a life shouldn’t depend on luck or reach —
+                                it should depend on care, connection, and timely action.”
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
 
             <section className="bg-[#f6f1ea] py-16 px-4 sm:px-8 lg:px-20">
                 <div className="max-w-7xl mx-auto text-center mb-12">
@@ -230,6 +228,156 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
+            <section className="bg-[#b3abaa] rounded-3xl mt-10  md:mt-20 py-16 sm:py-20 px-4 sm:px-6 lg:mx-22">
+                <div className="max-w-7xl mx-auto">
+
+                    <div className="text-center max-w-3xl mx-auto mb-3">
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
+                            Our Campaigns
+                        </h2>
+                        <p className="mt-4 text-base sm:text-lg text-gray-100">
+                            Initiatives that turn compassion into life-saving action
+                        </p>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:flex flex-col gap-8">
+                        <section className="py-10 px-4 sm:px-6 lg:px-12">
+                            <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-6 lg:gap-8">
+                                <div className="w-full lg:w-[340px] bg-white rounded-3xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition">
+                                    <div className="h-48 w-full flex items-center justify-center overflow-hidden rounded-t-3xl">
+                                        <img
+                                            src="/c33bc33e87255f107cc6613a15db0178.jpg"
+                                            alt="Emergency Blood Drive"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    <div className="p-6">
+                                        <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                                            Emergency Blood Drive
+                                        </h3>
+                                        <p className="text-sm text-gray-600 mb-4">
+                                            Rapid response campaigns organized during critical shortages to connect donors with emergency requests.
+                                        </p>
+                                        <span className="inline-block text-xs font-medium px-3 py-1 rounded-full bg-red-100 text-red-700">
+                                            Ongoing
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div className="w-full lg:w-[55%] bg-white/90 backdrop-blur-lg rounded-3xl shadow-md border-2 border-amber-300 p-6 sm:p-8">
+                                    <h4 className="text-2xl font-bold text-[#12372A] mb-4">Campaign Description</h4>
+                                    <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6">
+                                        This campaign focuses on addressing urgent blood shortages during emergency situations. Our goal is to mobilize donors quickly, ensure verified requests, and reduce response time so that no life is put at risk due to delay.
+                                    </p>
+                                    <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
+                                        <div>
+                                            <p className="text-sm text-gray-500">Campaign Duration</p>
+                                            <p className="text-base font-semibold text-gray-800">June 15 – June 30, 2025</p>
+                                        </div>
+                                        <div>
+                                            <p className="text-sm text-gray-500">Coverage</p>
+                                            <p className="text-base font-semibold text-gray-800">Nationwide</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section className="py-10 px-4 sm:px-6 lg:px-12">
+                            <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-6 lg:gap-8">
+
+                                <div className="w-full lg:w-[55%] bg-white/90 backdrop-blur-lg rounded-3xl shadow-md border-2 border-amber-300 p-6 sm:p-8">
+                                    <h4 className="text-2xl font-bold text-[#12372A] mb-4">Campaign Description</h4>
+                                    <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6">
+                                        This campaign focuses on spreading awareness about the importance of blood donation and educating people on eligibility, safety, and myths surrounding the process. Through workshops, digital outreach, and community engagement, we aim to build a culture of regular, voluntary blood donation.
+                                    </p>
+                                    <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
+                                        <div>
+                                            <p className="text-sm text-gray-500">Campaign Duration</p>
+                                            <p className="text-base font-semibold text-gray-800">July 1 – July 31, 2025</p>
+                                        </div>
+                                        <div>
+                                            <p className="text-sm text-gray-500">Coverage</p>
+                                            <p className="text-base font-semibold text-gray-800">Community & Online</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div className="w-full lg:w-[340px] bg-white rounded-3xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition">
+                                    <div className="h-48 w-full flex items-center justify-center overflow-hidden rounded-t-3xl">
+                                        <img
+                                            src="/668572265d6f3bb0cac63f4d50fb4bcc.jpg"
+                                            alt="Awareness & Education"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    <div className="p-6">
+                                        <h3 className="text-xl font-semibold text-gray-800 mb-2">Awareness & Education</h3>
+                                        <p className="text-sm text-gray-600 mb-4">
+                                            Educating communities about safe blood donation, eligibility, and the long-term impact of regular donors.
+                                        </p>
+                                        <span className="inline-block text-xs font-medium px-3 py-1 rounded-full bg-amber-100 text-amber-700">
+                                            Community
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section className="py-10 px-4 sm:px-6 lg:px-12">
+                            <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-6 lg:gap-8">
+
+                                <div className="w-full lg:w-[340px] bg-white rounded-3xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition">
+                                    <div className="h-48 w-full flex items-center justify-center overflow-hidden rounded-t-3xl">
+                                        <img
+                                            src="/004d2dfe8db5d6280abac6f376c235df.jpg"
+                                            alt="Campus & Organization Drives"
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
+                                    <div className="p-6">
+                                        <h3 className="text-xl font-semibold text-gray-800 mb-2">Campus & Organization Drives</h3>
+                                        <p className="text-sm text-gray-600 mb-4">
+                                            Partnering with schools, colleges, and organizations to host structured blood donation events.
+                                        </p>
+                                        <span className="inline-block text-xs font-medium px-3 py-1 rounded-full bg-emerald-100 text-emerald-700">
+                                            Partnerships
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div className="w-full lg:w-[55%] bg-white/90 backdrop-blur-lg rounded-3xl shadow-md border-2 border-amber-300 p-6 sm:p-8">
+                                    <h4 className="text-2xl font-bold text-[#12372A] mb-4">Campaign Description</h4>
+                                    <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-6">
+                                        This campaign focuses on collaborating with educational institutions and organizations to organize structured blood donation events. We aim to make donation easier for students and employees, raise awareness, and build a culture of consistent giving within communities.
+                                    </p>
+                                    <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
+                                        <div>
+                                            <p className="text-sm text-gray-500">Campaign Duration</p>
+                                            <p className="text-base font-semibold text-gray-800">August 1 – August 31, 2025</p>
+                                        </div>
+                                        <div>
+                                            <p className="text-sm text-gray-500">Coverage</p>
+                                            <p className="text-base font-semibold text-gray-800">Campus & Organizations Nationwide</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <div className="mt-14 text-center max-w-4xl mx-auto">
+                            <p className="text-lg sm:text-xl italic text-gray-700">
+                                “Every campaign is a reminder that saving lives is not a single act — it’s a collective effort.”
+                            </p>
+                        </div>
+
+                    </div>
+
+
+
+
+
+                </div>
+            </section>
+
 
         </div>
     );

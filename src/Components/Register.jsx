@@ -100,7 +100,7 @@ const Register = () => {
     }
     return (
         <div>
-            <div className="min-h-screen pt-20 flex items-center justify-center bg-[#E4d8cb] p-6">
+            <div className="min-h-screen pt-20 flex items-center justify-center bg-gradient-to-b from-[#f6f1eb] to-[#e9dfd4] p-6">
                 <div className="bg-white w-full max-w-2xl rounded-3xl shadow-2xl p-10 space-y-8 border border-gray-100">
                     <h2 className="text-3xl font-extrabold text-center text-gray-700 tracking-wide">Create Your Account</h2>
 

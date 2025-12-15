@@ -25,7 +25,7 @@ const PublicDonationRequest = () => {
     console.log(items)
     const total = Math.ceil(response.totalCount / limit || 0)
     return (
-        <div className='min-h-screen pb-5 pt-17 bg-[#E4d8cb]'>
+        <div className='min-h-screen pb-5 pt-17 bg-gradient-to-b from-[#f6f1eb] to-[#e9dfd4]'>
            <div className="w-full flex justify-center relative mt-6 px-3 sm:px-6">
   <div className="w-full max-w-md sm:max-w-xl md:max-w-3xl lg:max-w-4xl mb-8">
     <div
