@@ -23,15 +23,15 @@ const RequestDetails = () => {
     const updateStatus = id => {
         const update = { status: "inprogress" }
         axiosSecure.patch(`/requests/${id}`, update)
-          .then(res => {
-                        if (res.data.modifiedCount) {
-                            //console.log("ok")
-                            toast('Data updated successfully')
-                            refetch()
-                        }
-                    })
-                    .catch(err => console.error(err));
-        
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    //console.log("ok")
+                    toast('Status updated to inprogress')
+                    refetch()
+                }
+            })
+            .catch(err => console.error(err));
+
     }
 
     return (
@@ -83,14 +83,14 @@ const RequestDetails = () => {
                                     Go Back
                                 </button> */}
                                 {
-                                    x.status=="pending"?    <button onClick={() => {
-                                    modalRef.current.showModal()
-                                    setrequestid(x._id)
-                                    refetch()
-                                }} className="btn rounded-full bg-amber-300 text-xs sm:text-sm md:text-base">Donate</button>
-                                : <button  disabled className='btn rounded-full disabled:cursor-not-allowed bg-amber-300  text-xs sm:text-sm md:text-base'> Donate</button>
+                                    x.status == "pending" ? <button onClick={() => {
+                                        modalRef.current.showModal()
+                                        setrequestid(x._id)
+                                        refetch()
+                                    }} className="btn rounded-full bg-amber-300 text-xs sm:text-sm md:text-base">Donate</button>
+                                        : <button disabled className='btn rounded-full cursor-not-allowed bg-amber-300  text-xs sm:text-sm md:text-base'> Donate</button>
                                 }
-                            
+
                             </div>
                         </div>
                     </div>
@@ -107,8 +107,32 @@ const RequestDetails = () => {
             </div>
             <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
-                    <h3 className="font-bold text-lg">Confirm action</h3>
-                    <p className="py-4">Are you sure you want to delete?</p>
+                    <form className=" flex flex-col gap-4 rounded-2xl border border-amber-400 backdrop-blur p-4 sm:p-5 shadow-md max-w-sm w-full ">
+                        <div>
+                            <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
+                                Donor Name
+                            </label>
+                            <input
+                                type="text"
+                                value={user?.displayName || ""}
+                                readOnly
+                                className=" input input-bordered w-full text-sm sm:text-base bg-gray-100 cursor-not-allowed"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-xs sm:text-sm font-semibold text-gray-700 mb-1">
+                                Email Address
+                            </label>
+                            <input
+                                type="email"
+                                value={user?.email || ""}
+                                readOnly
+                                className=" input input-bordered w-full text-sm sm:text-base bg-gray-100 cursor-not-allowed "
+                            />
+                        </div>
+                    </form>
+
+                    <p className="py-4">Are you sure you want to confirm?</p>
                     <div className="modal-action">
                         <button
                             className="btn bg-red-700 text-white"
@@ -129,11 +153,6 @@ const RequestDetails = () => {
                     </div>
                 </div>
             </dialog>
-
-
-
-
-
         </div>
     );
 };

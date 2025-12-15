@@ -28,18 +28,14 @@ const Navbar = () => {
         <li>|</li>
         <li ><NavLink to="/searchpage">Search</NavLink></li>
         <li>|</li>
-        <li ><NavLink to="/public-donation-request">Request Donation</NavLink></li>
-        <li>|</li>
+        <li ><NavLink to="/public-donation-request">Donation Requests</NavLink></li>
+        {(!user) && <li>|</li>}
         {
-            user
-                ? <li><button onClick={handlelogout}>Logout</button></li>
-                : <li><NavLink to="/login">Login</NavLink></li>
+            (!user) && <li><NavLink to="/login">Login</NavLink></li>
         }
-
-        {user && <li>|</li>}
-        {
+        {/* {
             user && <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
-        }
+        } */}
         {/* {
             user && <li><NavLink to={`/myactivities/${user.email}`}>My activities</NavLink></li>
         } */}
@@ -73,37 +69,33 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <div className="navbar-end">
+                {/* <div className="navbar-end">
                     {/* <div className="flex-none"> */}
-                    <div className="dropdown dropdown-end flex items-center gap-2">
-                        <div className='font-semibold'>{user?.displayName || "unknown"}</div>
 
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                            {/* <div className='tooltip tooltip-bottom' data-tip={user?.displayName||"user"}> */}
-                            <div className="w-10 rounded-full " >
-                                <img
-                                    //className={`hover:${user.displayName}`}
-                                    alt="Tailwind CSS Navbar component"
-                                    // src=""
-                                    src={`${user?.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}`}
-                                />
-                            </div>
-                            {/* </div> */}
 
-                        </div>
-                        <div
+                {
+                    user && <div className="dropdown dropdown-bottom navbar-end rounded-full">
+                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-full btn-circle avatar "
+
+                        >  <img className="w-10 rounded-full "
+                            //className={`hover:${user.displayName}`}
+                            alt="Tailwind CSS Navbar component"
+                            // src=""
+                            src={`${user?.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}`}
+                            /></div>
+                        <ul
                             tabIndex="-1"
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                            <a className="justify-between">
-                                {
-                                    user?.displayName || "unknown"}
-                            </a>
+                            className="menu dropdown-content text-black bg-base-200 rounded-box z-1 mt-4 w-52 p-2 shadow-sm">
+                            <li><button onClick={handlelogout}>Logout</button></li>
+                            <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
 
-                        </div>
+                        </ul>
                     </div>
-                </div>
+                }
+
+
             </div>
-        </div>
+        </div >
 
     );
 };

@@ -46,10 +46,10 @@ const PublicDonationRequest = () => {
       </div>
 
       <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight">
-        All Blood Requests
+        All Pending Blood Requests
       </h1>
       <p className="mt-2 sm:mt-3 text-sm sm:text-lg md:text-xl text-white/90 max-w-xl mx-auto">
-        Browse verified blood donation requests and help save lives in your community.
+        Browse verified pending blood donation requests and help save lives in your community.
       </p>
     </div>
   </div>
