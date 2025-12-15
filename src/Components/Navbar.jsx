@@ -56,7 +56,10 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
-                    <div>   <a className="md:text-2xl text-xl lg:text-[20px] p-2 px-4 bg-amber-400 rounded-4xl font-bold text-[#521D20]">BloodLink</a>
+                    <div className='flex gap-2'> 
+                        
+                         <a className="md:text-2xl flex text-xl lg:text-[20px] p-2 px-4 bg-amber-400 rounded-4xl font-bold text-[#521D20]">
+                            <img src="ChatGPT Image Dec 16, 2025, 01_36_20 AM.png" className='w-7 h-7 rounded-full' alt="" /> BloodLink</a>
                         {/* <div className=' text-[11px] md:text-sm pl-3 font-sans font-[400px]'>Join,Act & Grow <span className='font-bold text-[#17483d]'>Green</span> Together</div> */}
                     </div>
 

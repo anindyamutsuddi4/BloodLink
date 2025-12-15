@@ -21,6 +21,7 @@ import VolunteerDashboard from "./Components/VolunteerDashboard";
 import VolunteerRoute from "./Components/VolunteerRoute";
 import SearchPage from "./Components/SearchPage";
 import PublicDonationRequest from "./Components/PublicDonationRequest";
+import Footer from "./Components/Footer";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
             Component: ForbiddenAccess
 
         }, {
+            path: "/footer",
+            Component: Footer
+        },
+        {
             path: "/dashboard",
             element: <Privateroute><DashboardLayout></DashboardLayout></Privateroute>,
             children: [{
