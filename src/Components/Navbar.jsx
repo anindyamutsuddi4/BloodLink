@@ -56,17 +56,14 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
-                    <div className='flex gap-2'> 
-                        
-                         <a className="md:text-2xl flex text-xl lg:text-[20px] p-2 px-4 bg-amber-400 rounded-4xl font-bold text-[#521D20]">
-                            <img src="ChatGPT Image Dec 16, 2025, 01_36_20 AM.png" className='w-7 h-7 rounded-full' alt="" /> BloodLink</a>
+                    <div className='flex'>       
+                         <a className="md:text-2xl flex mx-auto justify-center items-center gap-1 text-xl lg:text-[20px] p-2 px-4 bg-amber-400 rounded-4xl font-bold text-[#521D20]">
+                            <img src="ChatGPT Image Dec 16, 2025, 01_36_20 AM.png" className='md:w-7 md:h-7 w-5 h-5 rounded-full' alt="" /> BloodLink</a>
                         {/* <div className=' text-[11px] md:text-sm pl-3 font-sans font-[400px]'>Join,Act & Grow <span className='font-bold text-[#17483d]'>Green</span> Together</div> */}
                     </div>
-
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-4 items-center  bg-[#6A040F]  rounded-4xl text-gray-200 font-semibold text-md">
-
                         {
                             list
                         }
@@ -80,7 +77,7 @@ const Navbar = () => {
                     user && <div className="dropdown dropdown-bottom navbar-end rounded-full">
                         <div tabIndex={0} role="button" className="btn btn-ghost rounded-full btn-circle avatar "
 
-                        >  <img className="w-10 rounded-full "
+                        >  <img className="w-10  rounded-full "
                             //className={`hover:${user.displayName}`}
                             alt="Tailwind CSS Navbar component"
                             // src=""

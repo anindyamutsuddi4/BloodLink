@@ -22,7 +22,7 @@ const PublicDonationRequest = () => {
         }
     })
     const items = response.data;
-    console.log(items)
+    //console.log(items)
     const total = Math.ceil(response.totalCount / limit || 0)
     return (
         <div className='min-h-screen pb-5 pt-17 bg-gradient-to-b from-[#f6f1eb] to-[#e9dfd4]'>
