@@ -13,7 +13,7 @@ const Funding = () => {
     const { user } = use(AuthContext)
     const axiosSecure = useAxiosSecure()
     const limit = 8
-    const { data: response = { data: [], totalCount: 0 } } = useQuery({
+    const { data: response = { data: [], totalCount: 0, totalFunds: 0 } } = useQuery({
         queryKey: ['all-payments', currentpage],
         enabled: !!user?.email,
         queryFn: async () => {
@@ -222,6 +222,12 @@ const Funding = () => {
 
                     {(response.totalCount > 0) ? (
                         <div className='mt-10'>
+
+                            <div className="flex justify-center mt-6">
+                                <div className="bg-yellow-300 text-green-800 px-6 py-4 rounded-md shadow-md text-lg sm:text-xl font-semibold w-full max-w-md text-center">
+                                    Total Funds Collected: ${response.totalFunds || 0}
+                                </div>
+                            </div>
 
                             <div className="pt-4 px-2 sm:px-4 md:px-10 lg:px-15 overflow-x-auto">
                                 <div className="overflow-x-auto border rounded-xl border-amber-400">

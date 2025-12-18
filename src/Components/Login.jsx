@@ -2,6 +2,7 @@ import React, { use, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { FcGoogle } from "react-icons/fc";
 import { AuthContext } from './AuthContext';
+import { toast } from 'react-toastify';
 
 //import DocumentMeta from 'react-document-meta';
 const Login = () => {
@@ -28,7 +29,7 @@ const Login = () => {
             .then(res => {
                 //console.log(res.user)
                 setuser(res.user)
-                // toast("Login successful!")
+                 toast("Login successful!")
                 navigate(`${location.state ? location.state : "/"}`)
             }
             )

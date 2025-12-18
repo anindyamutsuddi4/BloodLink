@@ -25,6 +25,7 @@ import Footer from "./Components/Footer";
 import Funding from "./Components/Funding";
 import PaymentSuccess from "./Components/PaymentSuccess";
 import PaymentCancelled from "./Components/PaymentCancelled";
+import Errorpage from "./Components/Errorpage";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -57,6 +58,9 @@ export const router = createBrowserRouter([
             path: "/forbidden",
             Component: ForbiddenAccess
 
+        }, {
+            path: "*",
+            Component: Errorpage
         }, {
             path: "/footer",
             Component: Footer

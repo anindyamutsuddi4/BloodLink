@@ -81,13 +81,13 @@ const Navbar = () => {
 
                 {
                     user && <div className="dropdown dropdown-bottom navbar-end rounded-full">
-                        <div tabIndex={0} role="button" className="btn btn-ghost rounded-full btn-circle avatar "
+                        <div tabIndex={0} role="button" className="btn btn-ghost border-2 border-red-800 rounded-full btn-circle avatar "
 
-                        >  <img className="w-10  rounded-full "
+                        >  <img className="w-8  rounded-full "
                             //className={`hover:${user.displayName}`}
                             alt="Tailwind CSS Navbar component"
                             // src=""
-                            src={`${user?.photoURL || "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"}`}
+                            src={`${user?.photoURL || "https://i.ibb.co.com/dJHnqKR2/images-q-tbn-ANd9-Gc-Tr3jhp-AFYpzxx39-DRu-XIYx-NPXc0z-I5-F6-Ii-MQ-s.png"}`}
                             /></div>
                         <ul
                             tabIndex="-1"

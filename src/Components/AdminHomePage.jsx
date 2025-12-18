@@ -7,7 +7,7 @@ import useAxiosSecure from '../useAxiosSecure';
 const AdminHomePage = () => {
     const { user } = use(AuthContext)
     const axiosSecure = useAxiosSecure()
-    const {  data: response = { data: [], totalCount: 0 } } = useQuery({
+    const { data: response = { data: [], totalCount: 0 } } = useQuery({
         queryKey: ['users', user?.email],
         enabled: !!user?.email,
         queryFn: async () => {
@@ -15,7 +15,7 @@ const AdminHomePage = () => {
             return res.data
         }
     })
-    const {  data: response2 = { data: [], totalCount: 0 } } = useQuery({
+    const { data: response2 = { data: [], totalCount: 0 } } = useQuery({
         queryKey: ['requests', user?.email],
         enabled: !!user?.email,
         queryFn: async () => {
@@ -25,7 +25,15 @@ const AdminHomePage = () => {
     })
     //console.log(data)
     //console.log(totalrequests)
-  
+    const { data: response3 = { data: [], totalCount: 0, totalFunds: 0 } } = useQuery({
+        queryKey: ['all-payments', 0],
+        enabled: !!user?.email,
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/allpayments/?limit=${8}&skip=${0 * 8}`)
+            return res.data
+        }
+    })
+
     return (
         <div className='bg-[#BFC0AB] min-h-screen'>
             <section className="text-white flex justify-center">
@@ -86,13 +94,13 @@ const AdminHomePage = () => {
                     <div className="relative bg-[#A2A684]
                                 rounded-full h-24 flex items-center justify-center shadow-lg
                                 transform hover:scale-105 transition-transform duration-300">
-                        <span className="text-white font-semibold text-lg md:text-xl">Ongoing </span>
+                        <span className="text-white font-semibold text-lg md:text-xl">Total Fund: {response3.totalFunds} </span>
 
                     </div>
                     <div className="relative bg-[#966A62]
                                 rounded-full h-24 flex items-center justify-center shadow-lg
                                 transform hover:scale-105 transition-transform duration-300">
-                        <span className="text-white font-semibold text-lg md:text-xl">Total Requests: { response2.totalCount}</span>
+                        <span className="text-white font-semibold text-lg md:text-xl">Total Requests: {response2.totalCount}</span>
 
                     </div>
 
