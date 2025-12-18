@@ -66,29 +66,28 @@ const Requestforblood = () => {
             .catch(error => console.log(error))
     }
     return (
-        <div className=' relative pt-10'>
-
-            <FaTint className="w-23 h-23 text-red-900 absolute right-15 top-7" />
-            <BsFillHeartPulseFill className="w-30 h-30 -rotate-9 animate-pulse text-red-900 absolute right-257 top-73" />
-            <div className="text-center bg-[#12372A] border-amber-300 border-2 p-12 mx-50 rounded-3xl mb-8">
-                <h1 className="text-4xl text-amber-300  sm:text-5xl lg:text-6xl font-extrabold bg-clip-text  drop-shadow-lg">
+        <div className='min-h-screen pt-10 px-4 sm:px-6 md:px-10 lg:px-20'>
+            <div className="text-center bg-[#12372A] border-amber-300 border-2 p-6 sm:p-8 md:p-10 lg:p-12 mx-4 sm:mx-8 lg:mx-50 rounded-3xl mb-8">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-amber-300 font-extrabold drop-shadow-lg">
                     Request Blood, Save Lives
                 </h1>
-                <p className="mt-3 text-lg sm:text-xl text-white max-w-2xl mx-auto">
+                <p className="mt-3 text-sm sm:text-base md:text-lg lg:text-xl text-white max-w-full sm:max-w-xl md:max-w-2xl mx-auto">
                     Fill out the form below to request blood for someone in need. Your request can make a difference—every drop counts.
                 </p>
             </div>
+
 
             <div className="min-h-screen pt-5 flex justify-center items-start  p-6">
                 {
                     status == "active" ? <form
                         onSubmit={handleSubmit(onSubmit)}
-                        className="w-full z-1 max-w-2xl bg-white rounded-3xl shadow-2xl p-6 space-y-4 border border-amber-500"
+                        className="w-full z-1 max-w-2xl bg-white rounded-3xl shadow-2xl p-4 sm:p-6 space-y-4 border border-amber-500"
                     >
-                        <h2 className="text-3xl font-bold text-amber-400 text-center mb-4">
+                        <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-3xl font-bold text-amber-400 text-center mb-4">
                             Blood Request Form
                         </h2>
-                        <div className="flex gap-4">
+
+                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                             <input
                                 type="text"
                                 value={user?.displayName || ''}
@@ -104,6 +103,7 @@ const Requestforblood = () => {
                                 placeholder="Requester Email"
                             />
                         </div>
+
                         <input
                             type="text"
                             {...register('recipientName')}
@@ -111,21 +111,33 @@ const Requestforblood = () => {
                             className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
                             required
                         />
-                        <div className="flex gap-4">
-                            <select {...register('divisions')} required defaultValue="Pick a division" className="select flex-1">
-                                <option disabled={true}>Pick a division</option>
-                                {
-                                    alldivisions.map((x, i) => <option key={i} value={x.name}>{x.name}</option>)
-                                }
 
+                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                            <select
+                                {...register('divisions')}
+                                required
+                                defaultValue="Pick a division"
+                                className="select flex-1"
+                            >
+                                <option disabled>Pick a division</option>
+                                {alldivisions.map((x, i) => (
+                                    <option key={i} value={x.name}>{x.name}</option>
+                                ))}
                             </select>
-                            <select {...register('district')} required defaultValue="Pick a district" className="select flex-1 text-black">
-                                <option disabled={true}>Pick a district</option>
-                                {
-                                    districts(selecteddistrict).map((x, i) => <option key={i} value={x.name}>{x}</option>)
-                                }
+
+                            <select
+                                {...register('district')}
+                                required
+                                defaultValue="Pick a district"
+                                className="select flex-1 text-black"
+                            >
+                                <option disabled>Pick a district</option>
+                                {districts(selecteddistrict).map((x, i) => (
+                                    <option key={i} value={x.name}>{x}</option>
+                                ))}
                             </select>
                         </div>
+
                         <input
                             type="text"
                             {...register('hospital')}
@@ -141,15 +153,20 @@ const Requestforblood = () => {
                             className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
                             required
                         />
-                        <select {...register('bloodgroup')} required
-                            defaultValue="select your blood group" className="select p-3 rounded-md border shadow-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 col-span-1 md:col-span-2">
-                            <option >Select your blood group</option>
-                            {
-                                ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map((x, i) => <option key={i} value={x}>{x}</option>)
-                            }
 
+                        <select
+                            {...register('bloodgroup')}
+                            required
+                            defaultValue="select your blood group"
+                            className="select p-3 rounded-md border shadow-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 col-span-1 md:col-span-2"
+                        >
+                            <option>Select your blood group</option>
+                            {['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map((x, i) => (
+                                <option key={i} value={x}>{x}</option>
+                            ))}
                         </select>
-                        <div className="flex gap-4">
+
+                        <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                             <input
                                 type="date"
                                 {...register('donationDate')}
@@ -170,137 +187,152 @@ const Requestforblood = () => {
                             className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 h-32 resize-none"
                             required
                         />
-                        {
-                            status == "active" ? <button
+
+                        {status === 'active' ? (
+                            <button
                                 type="submit"
                                 className="w-full py-3 bg-primary text-white font-semibold rounded-3xl shadow hover:bg-red-700 transition-colors"
                             >
                                 Submit Request
-                            </button> : <button
+                            </button>
+                        ) : (
+                            <button
                                 type="submit"
                                 disabled
-                                className="w-full py-3 cursor-not-allowed bg-gray-400 text-black font-semibold rounded-3xl shadow "
+                                className="w-full py-3 cursor-not-allowed bg-gray-400 text-black font-semibold rounded-3xl shadow"
                             >
                                 Submit Request
                             </button>
-                        }
-                        {/* <button
-                        type="submit"
-                        className="w-full py-3 bg-primary text-white font-semibold rounded-3xl shadow hover:bg-red-700 transition-colors"
-                    >
-                        Submit Request
-                    </button> */}
-                    </form> : <form
-                        disabled
-                        onSubmit={handleSubmit(onSubmit)}
-                        className="w-full cursor-not-allowed z-1 max-w-2xl bg-gray-200 rounded-3xl shadow-2xl p-6 space-y-4 border border-amber-500"
-                    >
-                        <h2 className="text-3xl font-bold text-amber-400 text-center mb-4">
-                            Blood Request Form
-                        </h2>
-                        <div className="flex gap-4">
+                        )}
+                    </form>
+                        : <form
+                            disabled
+                            onSubmit={handleSubmit(onSubmit)}
+                            className="w-full cursor-not-allowed z-1 max-w-2xl bg-gray-200 rounded-3xl shadow-2xl p-4 sm:p-6 space-y-4 border border-amber-500"
+                        >
+                            <h2 className="text-2xl sm:text-3xl lg:text-3xl font-bold text-amber-400 text-center mb-4">
+                                Blood Request Form
+                            </h2>
+
+                            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                                <input
+                                    type="text"
+                                    value={user?.displayName || ''}
+                                    readOnly
+                                    className="flex-1 p-3 border rounded-lg bg-gray-100 cursor-not-allowed"
+                                    placeholder="Requester Name"
+                                />
+                                <input
+                                    type="email"
+                                    value={user?.email || ''}
+                                    readOnly
+                                    className="flex-1 p-3 border rounded-lg bg-gray-100 cursor-not-allowed"
+                                    placeholder="Requester Email"
+                                />
+                            </div>
+
                             <input
                                 type="text"
-                                value={user?.displayName || ''}
-                                readOnly
-                                className="flex-1 p-3 border rounded-lg bg-gray-100 cursor-not-allowed"
-                                placeholder="Requester Name"
-                            />
-                            <input
-                                type="email"
-                                value={user?.email || ''}
-                                readOnly
-                                className="flex-1  p-3 border rounded-lg bg-gray-100 cursor-not-allowed"
-                                placeholder="Requester Email"
-                            />
-                        </div>
-                        <input
-                            type="text"
-                            {...register('recipientName')}
-                            placeholder="Recipient Name"
-                            className="w-full p-3 border cursor-not-allowed rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
-                            required
-                        />
-                        <div className="flex gap-4">
-                            <select {...register('divisions')} required defaultValue="Pick a division" className="select cursor-not-allowed flex-1">
-                                <option disabled={true}>Pick a division</option>
-                                {
-                                    alldivisions.map((x, i) => <option key={i} value={x.name}>{x.name}</option>)
-                                }
-
-                            </select>
-                            <select {...register('district')} required defaultValue="Pick a district" className="select cursor-not-allowed flex-1 text-black">
-                                <option disabled={true}>Pick a district</option>
-                                {
-                                    districts(selecteddistrict).map((x, i) => <option key={i} value={x.name}>{x}</option>)
-                                }
-                            </select>
-                        </div>
-                        <input
-                            type="text"
-                            {...register('hospital')}
-                            placeholder="Hospital Name"
-                            className="w-full p-3 cursor-not-allowed border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
-                            required
-                        />
-
-                        <input
-                            type="text"
-                            {...register('fulladdress')}
-                            placeholder="Full Address"
-                            className="w-full p-3 border cursor-not-allowed rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
-                            required
-                        />
-                        <select {...register('bloodgroup')} required
-                            defaultValue="select your blood group" className="select cursor-not-allowed p-3 rounded-md border shadow-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 col-span-1 md:col-span-2">
-                            <option >Select your blood group</option>
-                            {
-                                ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map((x, i) => <option key={i} value={x}>{x}</option>)
-                            }
-
-                        </select>
-                        <div className="flex gap-4">
-                            <input
-                                type="date"
-                                {...register('donationDate')}
-                                className="flex-1 p-3 border cursor-not-allowed rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                                {...register('recipientName')}
+                                placeholder="Recipient Name"
+                                className="w-full p-3 border cursor-not-allowed rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
                                 required
                             />
+
+                            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                                <select
+                                    {...register('divisions')}
+                                    required
+                                    defaultValue="Pick a division"
+                                    className="select cursor-not-allowed flex-1"
+                                >
+                                    <option disabled>Pick a division</option>
+                                    {alldivisions.map((x, i) => (
+                                        <option key={i} value={x.name}>{x.name}</option>
+                                    ))}
+                                </select>
+
+                                <select
+                                    {...register('district')}
+                                    required
+                                    defaultValue="Pick a district"
+                                    className="select cursor-not-allowed flex-1 text-black"
+                                >
+                                    <option disabled>Pick a district</option>
+                                    {districts(selecteddistrict).map((x, i) => (
+                                        <option key={i} value={x.name}>{x}</option>
+                                    ))}
+                                </select>
+                            </div>
+
                             <input
-                                type="time"
-                                {...register('donationTime')}
-                                className="flex-1 p-3 border cursor-not-allowed rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                                type="text"
+                                {...register('hospital')}
+                                placeholder="Hospital Name"
+                                className="w-full p-3 border cursor-not-allowed rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
                                 required
                             />
-                        </div>
 
-                        <textarea
-                            {...register('requestMessage')}
-                            placeholder="Request Message"
-                            className="w-full cursor-not-allowed p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 h-32 resize-none"
-                            required
-                        />
-                        {
-                            status == "active" ? <button
-                                type="submit"
-                                className="w-full py-3 bg-primary text-white font-semibold rounded-3xl shadow hover:bg-red-700 transition-colors"
+                            <input
+                                type="text"
+                                {...register('fulladdress')}
+                                placeholder="Full Address"
+                                className="w-full p-3 border cursor-not-allowed rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                                required
+                            />
+
+                            <select
+                                {...register('bloodgroup')}
+                                required
+                                defaultValue="select your blood group"
+                                className="select cursor-not-allowed p-3 rounded-md border shadow-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-400 col-span-1 md:col-span-2"
                             >
-                                Submit Request
-                            </button> : <button
-                                type="submit"
-                                disabled
-                                className="w-full py-3 cursor-not-allowed bg-gray-300 text-black font-semibold rounded-3xl shadow "
-                            >
-                                Submit Request
-                            </button>
-                        }
-                        {/* <button
-                        type="submit"
-                        className="w-full py-3 bg-primary text-white font-semibold rounded-3xl shadow hover:bg-red-700 transition-colors"
-                    >
-                        Submit Request
-                    </button> */}
-                    </form>
+                                <option>Select your blood group</option>
+                                {['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'].map((x, i) => (
+                                    <option key={i} value={x}>{x}</option>
+                                ))}
+                            </select>
+
+                            <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                                <input
+                                    type="date"
+                                    {...register('donationDate')}
+                                    className="flex-1 p-3 border cursor-not-allowed rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                                    required
+                                />
+                                <input
+                                    type="time"
+                                    {...register('donationTime')}
+                                    className="flex-1 p-3 border cursor-not-allowed rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                                    required
+                                />
+                            </div>
+
+                            <textarea
+                                {...register('requestMessage')}
+                                placeholder="Request Message"
+                                className="w-full cursor-not-allowed p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 h-32 resize-none"
+                                required
+                            />
+
+                            {status === 'active' ? (
+                                <button
+                                    type="submit"
+                                    className="w-full py-3 bg-primary text-white font-semibold rounded-3xl shadow hover:bg-red-700 transition-colors"
+                                >
+                                    Submit Request
+                                </button>
+                            ) : (
+                                <button
+                                    type="submit"
+                                    disabled
+                                    className="w-full py-3 cursor-not-allowed bg-gray-300 text-black font-semibold rounded-3xl shadow"
+                                >
+                                    Submit Request
+                                </button>
+                            )}
+                        </form>
+
                 }
 
             </div>
