@@ -69,7 +69,7 @@ const Navbar = () => {
                     </div>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-4 items-center  bg-[#6A040F]  rounded-4xl text-gray-200 font-semibold text-md">
+                    <ul className="menu menu-horizontal px-4 items-center  bg-primary  rounded-4xl text-gray-200 font-semibold text-md">
                         {
                             list
                         }

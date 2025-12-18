@@ -4,7 +4,7 @@ import { AuthContext } from './AuthContext';
 import useAxiosSecure from '../useAxiosSecure';
 
 const useStatus = () => {
-  const { user } = use(AuthContext)
+    const { user } = use(AuthContext)
     const axiosSecure = useAxiosSecure()
     const { isLoading, data: status = 'active' } = useQuery({
         queryKey: ['user-status', user?.email],
