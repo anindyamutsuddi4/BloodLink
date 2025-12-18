@@ -22,6 +22,7 @@ import VolunteerRoute from "./Components/VolunteerRoute";
 import SearchPage from "./Components/SearchPage";
 import PublicDonationRequest from "./Components/PublicDonationRequest";
 import Footer from "./Components/Footer";
+import Funding from "./Components/Funding";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -38,10 +39,12 @@ export const router = createBrowserRouter([
         }, {
             path: "/searchpage",
             Component: SearchPage
-
         }, {
             path: "/public-donation-request",
             Component: PublicDonationRequest
+        }, {
+            path: "/fundings",
+            element:<Privateroute><Funding></Funding></Privateroute>
         }, {
             path: "/forbidden",
             Component: ForbiddenAccess

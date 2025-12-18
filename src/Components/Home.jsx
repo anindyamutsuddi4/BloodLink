@@ -1,6 +1,7 @@
 import React, { use } from 'react';
 import { useNavigate } from 'react-router';
 import { AuthContext } from './AuthContext';
+import Parallax from './Parallax';
 
 const Home = () => {
     const navigate = useNavigate()
@@ -47,6 +48,7 @@ const Home = () => {
                             </button>
                         </div>
                     </div>
+
                     <div className="flex-1 flex justify-center lg:justify-end">
                         {/* <img
                             src="/public/6924ac9115cf56dca98f75f23af6d235.jpg"
@@ -377,69 +379,69 @@ const Home = () => {
 
                 </div>
             </section>
-<section className="py-12 px-4 sm:px-6 lg:px-12">
-    <div className='text-5xl text-[#5B787F] mx-auto font-extrabold text-center border-t-2 border-amber-300 lg:pt-15 pb-10' >Get in Touch with Us</div>
-  <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10">
+            <section className="py-12 px-4 sm:px-6 lg:px-12">
+                <div className='text-5xl text-[#5B787F] mx-auto font-extrabold text-center border-t-2 border-amber-300 lg:pt-15 pb-10' >Get in Touch with Us</div>
+                <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-10">
 
-  
-    <div className="flex-1 bg-white rounded-3xl shadow-lg border border-[#5B787F] p-6 sm:p-8">
-      <h2 className="text-3xl sm:text-4xl font-extrabold text-[#12372A] mb-6">Contact Us</h2>
-      <form className="flex flex-col gap-4">
-        <input
-          type="text"
-          placeholder="Your Name"
-          className="input input-bordered w-full rounded-lg p-3 text-sm sm:text-base"
-          required
-        />
-        <input
-          type="email"
-          placeholder="Your Email"
-          className="input input-bordered w-full rounded-lg p-3 text-sm sm:text-base"
-          required
-        />
-        <input
-          type="text"
-          placeholder="Subject"
-          className="input input-bordered w-full rounded-lg p-3 text-sm sm:text-base"
-        />
-        <textarea
-          placeholder="Message"
-          className="textarea textarea-bordered w-full rounded-lg p-3 text-sm sm:text-base"
-          rows="5"
-          required
-        ></textarea>
-        <button
-          type="submit"
-          className="btn bg-yellow-400 text-[#17483d] w-full rounded-full mt-2 py-6  hover:bg-[#0f2f28] transition hover:text-white"
-        >
-          Send Message
-        </button>
-      </form>
-    </div>
 
-    <div className="flex-1 bg-white/90 backdrop-blur-lg rounded-3xl shadow-md border border-[#5B787F]  p-6 sm:p-8 flex flex-col justify-center">
-      <h3 className="text-3xl font-bold text-yellow-400 mb-4">Get in Touch</h3>
-      <p className="text-gray-700 text-sm sm:text-base mb-4">
-        Have questions or need assistance? Reach out to us anytime. We’re here to help.
-      </p>
-      <div className="flex flex-col gap-3">
-        <div>
-          <span className="font-semibold text-gray-800">Phone:</span>
-          <p className="text-gray-600 text-sm sm:text-base">+880 1234 567 890</p>
-        </div>
-        <div>
-          <span className="font-semibold text-gray-800">Email:</span>
-          <p className="text-gray-600 text-sm sm:text-base">support@bloodlink.com</p>
-        </div>
-        <div>
-          <span className="font-semibold text-gray-800">Address:</span>
-          <p className="text-gray-600 text-sm sm:text-base">123, Blood Donation Street, Dhaka, Bangladesh</p>
-        </div>
-      </div>
-    </div>
+                    <div className="flex-1 bg-white rounded-3xl shadow-lg border border-[#5B787F] p-6 sm:p-8">
+                        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#12372A] mb-6">Contact Us</h2>
+                        <form className="flex flex-col gap-4">
+                            <input
+                                type="text"
+                                placeholder="Your Name"
+                                className="input input-bordered w-full rounded-lg p-3 text-sm sm:text-base"
+                                required
+                            />
+                            <input
+                                type="email"
+                                placeholder="Your Email"
+                                className="input input-bordered w-full rounded-lg p-3 text-sm sm:text-base"
+                                required
+                            />
+                            <input
+                                type="text"
+                                placeholder="Subject"
+                                className="input input-bordered w-full rounded-lg p-3 text-sm sm:text-base"
+                            />
+                            <textarea
+                                placeholder="Message"
+                                className="textarea textarea-bordered w-full rounded-lg p-3 text-sm sm:text-base"
+                                rows="5"
+                                required
+                            ></textarea>
+                            <button
+                                type="submit"
+                                className="btn bg-yellow-400 text-[#17483d] w-full rounded-full mt-2 py-6  hover:bg-[#0f2f28] transition hover:text-white"
+                            >
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
 
-  </div>
-</section>
+                    <div className="flex-1 bg-white/90 backdrop-blur-lg rounded-3xl shadow-md border border-[#5B787F]  p-6 sm:p-8 flex flex-col justify-center">
+                        <h3 className="text-3xl font-bold text-yellow-400 mb-4">Get in Touch</h3>
+                        <p className="text-gray-700 text-sm sm:text-base mb-4">
+                            Have questions or need assistance? Reach out to us anytime. We’re here to help.
+                        </p>
+                        <div className="flex flex-col gap-3">
+                            <div>
+                                <span className="font-semibold text-gray-800">Phone:</span>
+                                <p className="text-gray-600 text-sm sm:text-base">+880 1234 567 890</p>
+                            </div>
+                            <div>
+                                <span className="font-semibold text-gray-800">Email:</span>
+                                <p className="text-gray-600 text-sm sm:text-base">support@bloodlink.com</p>
+                            </div>
+                            <div>
+                                <span className="font-semibold text-gray-800">Address:</span>
+                                <p className="text-gray-600 text-sm sm:text-base">123, Blood Donation Street, Dhaka, Bangladesh</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
 
 
         </div>

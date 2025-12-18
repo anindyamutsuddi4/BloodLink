@@ -33,6 +33,12 @@ const Navbar = () => {
         {
             (!user) && <li><NavLink to="/login">Login</NavLink></li>
         }
+        {(user) && <li>|</li>}
+        {
+            (user) && <li><NavLink to="/fundings">Fundings</NavLink></li>
+        }
+        {/* <li ><NavLink to="/fundings">Fundings</NavLink></li> */}
+
         {/* {
             user && <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
         } */}
@@ -56,9 +62,9 @@ const Navbar = () => {
                             }
                         </ul>
                     </div>
-                    <div className='flex'>       
-                         <a className="md:text-2xl flex mx-auto justify-center items-center gap-1 text-xl lg:text-[20px] p-2 px-4 bg-amber-400 rounded-4xl font-bold text-[#521D20]">
-                            <img src="ChatGPT Image Dec 16, 2025, 01_36_20 AM.png" className='md:w-7 md:h-7 w-5 h-5 rounded-full' alt="" /> BloodLink</a>
+                    <div className='flex'>
+                        <a className="md:text-2xl flex mx-auto justify-center items-center gap-1 text-xl lg:text-[20px] p-2 px-4 bg-amber-400 rounded-4xl font-bold text-[#521D20]">
+                            <img src="/ChatGPT Image Dec 16, 2025, 01_36_20 AM.png" className='md:w-7 md:h-7 w-5 h-5 rounded-full' alt="" /> BloodLink</a>
                         {/* <div className=' text-[11px] md:text-sm pl-3 font-sans font-[400px]'>Join,Act & Grow <span className='font-bold text-[#17483d]'>Green</span> Together</div> */}
                     </div>
                 </div>
