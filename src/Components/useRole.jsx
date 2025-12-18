@@ -9,14 +9,12 @@ const useRole = () => {
         queryKey: ['user-role', user?.email],
         queryFn: async () => {
             const res = await axiosSecure.get(`/users/${user?.email}/role`)
-            console.log(res.data.role)
+            //console.log(res.data.role)
             return res.data?.role
         }
 
     })
-    return { isLoading, role };//duita jinish pathai dicchi
-    //dashboard e useRole use korbo karon,
-    //  ManageUsers,apprive-riders egula only admin korte parbo
+    return { isLoading, role };
 };
 
 export default useRole;

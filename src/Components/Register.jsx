@@ -4,6 +4,7 @@ import { AuthContext } from './AuthContext';
 import useAxiosSecure from '../useAxiosSecure';
 import { reload } from 'firebase/auth';
 import { auth } from '../firebase.init';
+import { toast } from 'react-toastify';
 const Register = () => {
     const [alldivisions, setalldivisions] = useState([])
     const [alldistricts, setalldistricts] = useState([])
@@ -76,26 +77,13 @@ const Register = () => {
                 axiosSecure.post('/users', userinfo)
                     .then(res => {
                         if (res.data.insertedId) {
-                            console.log("user created at database")
+                            toast("Registration successful")
+                            //console.log("user created at database")
                         }
                     })
             })
-            .catch(error => console.log(error))
-        // updateuser({
-        //     ...(data.name && { displayName: data.name }),
-        //     ...(data.avatar && { photoURL: data.avatar })
-        // })
-        //     .then(async () => {
-        //         console.log("User data updated to Firebase");
-        //         // reload the user to get updated displayName and photoURL
-        //         await reload(auth.currentUser);
-        //         console.log(auth.currentUser.displayName, auth.currentUser.photoURL);
-        //     })
-        //     .catch((error) => {
-        //         console.error(error);
-        //     });
-        // axiosSecure.post('/users', data)
-        //     .then(res => console.log(res.data))
+            .catch(error =>
+                 console.log(error))
 
     }
     return (
