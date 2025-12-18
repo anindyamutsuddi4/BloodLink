@@ -23,6 +23,8 @@ import SearchPage from "./Components/SearchPage";
 import PublicDonationRequest from "./Components/PublicDonationRequest";
 import Footer from "./Components/Footer";
 import Funding from "./Components/Funding";
+import PaymentSuccess from "./Components/PaymentSuccess";
+import PaymentCancelled from "./Components/PaymentCancelled";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -44,7 +46,13 @@ export const router = createBrowserRouter([
             Component: PublicDonationRequest
         }, {
             path: "/fundings",
-            element:<Privateroute><Funding></Funding></Privateroute>
+            element: <Privateroute><Funding></Funding></Privateroute>
+        }, {
+            path: "/payment-success",
+            element: <Privateroute><PaymentSuccess></PaymentSuccess></Privateroute>
+        }, {
+            path: "/payment-cancelled",
+            element: <Privateroute><PaymentCancelled></PaymentCancelled></Privateroute>
         }, {
             path: "/forbidden",
             Component: ForbiddenAccess
