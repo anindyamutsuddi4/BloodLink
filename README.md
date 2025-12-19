@@ -1,16 +1,28 @@
-# React + Vite
+# BloodLink
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Purpose
+BloodLink is a web application designed to connect blood donors with recipients in need. Users can request blood, manage donor profiles, and track donation status.
 
-Currently, two official plugins are available:
+## Live URL
+https://bloodlink-1676e.web.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
+- User registration and authentication with role-based access
+- Blood request form for recipients
+- Donor profile management 
+- Display of user statistics and donation history
+- Responsive design for devices
+- Admin/volunteer dashboard to manage requests and users
+- Secure API endpoints with token verification
+- Payment tracking and fund collection
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## npm Packages
+- react
+- react-router-dom
+- react-hook-form
+- tanstack/react-query
+- firebase
+- axios
+- framer-motion
+- react-icons
+- tailwindcss
