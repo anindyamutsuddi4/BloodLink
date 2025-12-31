@@ -28,10 +28,10 @@
 - React Hook Form  
 - Tanstack/React Query  
 - Framer Motion  
-- React Icons  
+- React Icons
 
 ### 🔹 Screenshot
-![BloodLink Screenshot](Screenshot 2025-12-31 180320.png)
+![BloodLink Screenshot](Screenshot%202025-12-31%20180320.png)
 
 ### 🔹 Installation / Running Locally
 
