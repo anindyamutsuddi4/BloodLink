@@ -31,7 +31,7 @@
 - React Icons  
 
 ### 🔹 Screenshot
-![BloodLink Screenshot](./1673b15c-4837-473d-b1a6-dbf6c01439d2.png)
+![BloodLink Screenshot](Screenshot 2025-12-31 180320.png)
 
 ### 🔹 Installation / Running Locally
 
