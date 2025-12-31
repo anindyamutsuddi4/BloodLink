@@ -30,6 +30,10 @@
 - Framer Motion  
 - React Icons  
 
+### 🔹 Screenshot
+![BloodLink Screenshot](./1673b15c-4837-473d-b1a6-dbf6c01439d2.png)
+
+
 ### 🔹 Installation / Running Locally
 
 1. **Clone the repository**  
